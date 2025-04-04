@@ -36,6 +36,17 @@ function inscriptionPage()
 
     renderPage($data_page);
 }
+function pratiquePage()
+{
+    $data_page = [
+        'description' => 'Page de pratique',
+        'title' => 'Pratique',
+        'view' => 'Views/pages/pratiquePage.php',
+        'layout' => 'Views/commons/layout.php',
+    ];
+
+    renderPage($data_page);
+}
 function introPage($pdo)
 {
     $shortcuts = getWindowsShortcuts($pdo);

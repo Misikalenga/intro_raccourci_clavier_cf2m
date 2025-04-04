@@ -25,6 +25,9 @@ switch ($url[0]) {
     case 'intro':
         introPage($pdo);
         break;
+    case 'training':
+        pratiquePage();
+        break;
     default:
         errorPage();
         break;
