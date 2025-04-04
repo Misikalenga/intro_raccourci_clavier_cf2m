@@ -32,6 +32,16 @@ function inscriptionPage(){
 
     renderPage($data_page);
 }
+function introPage(){
+    $data_page=[
+        'description' => 'Page d\'introduction',
+        'title' => 'Introduction',
+        'view' => 'Views/pages/introPage.php',
+        'layout' => 'Views/commons/layout.php',
+    ];
+
+    renderPage($data_page);
+}
 function errorPage(){
     $data_page=[
         'description' => 'Page d\'erreur',

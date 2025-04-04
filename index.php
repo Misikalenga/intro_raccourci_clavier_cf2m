@@ -21,6 +21,9 @@ switch ($url[0]) {
     case 'inscription':
         inscriptionPage();
         break;
+    case 'intro':
+        introPage();
+        break;
     default:
         errorPage();
         break;
