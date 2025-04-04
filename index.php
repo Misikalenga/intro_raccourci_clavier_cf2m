@@ -1,5 +1,6 @@
 <?php
 require_once 'Controllers/PublicController.php';
+require_once 'Models/ShortcutModel.php';
 
 
 define('ROOT', str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https://" : "http://") . $_SERVER['HTTP_HOST'] . $_SERVER["PHP_SELF"]));
@@ -22,7 +23,7 @@ switch ($url[0]) {
         inscriptionPage();
         break;
     case 'intro':
-        introPage();
+        introPage($pdo);
         break;
     default:
         errorPage();

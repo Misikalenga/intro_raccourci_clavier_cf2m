@@ -14,7 +14,7 @@
 <body class="d-flex flex-column min-vh-100">
     <?php require_once 'Views/commons/header.php'; ?>
 
-    <main class="border border-2 border-black flex-grow-1 d-flex justify-content-center align-items-center">
+    <main class="flex-grow-1 d-flex justify-content-center align-items-center">
         <?= $content ?>
     </main>
 

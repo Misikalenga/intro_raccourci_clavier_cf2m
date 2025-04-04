@@ -1,7 +1,32 @@
-main{
-    background-color: #dbbdc0;
+body{
+    font-size: 1.1rem;
+}
+p{
+    font-weight: bold;
+
 }
 
-footer{
-    background-color: #fafafa;
+main{
+    background-color: #f2f2f2;
+}
+
+footer,nav{
+    background-color: #cccccc;
+}
+
+.alert{
+    background-color:#cccccc;
+    width: 80%;
+}
+
+table > tbody > tr > td:nth-child(2) {
+    width: 24%; /* Définit la largeur de la deuxième colonne */
+    text-align: left; /* Centre le texte */
+}
+
+table > tbody > tr > td:nth-child(1) {
+    text-align: center; /* Centre le texte */
+}
+h2,h1{
+    margin:2% ;
 }
