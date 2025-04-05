@@ -31,44 +31,50 @@
     <table class="table table-bordered table-striped">
         <thead class="table-dark">
             <tr>
-                <th>ID</th>
+                <th class="text-center">ID</th>
                 <th>Raccourci clavier</th>
                 <th>Utilité</th>
             </tr>
         </thead>
         <tbody>
-        <?php foreach ($shortcuts as $index => $shortcut): ?>
-            <tr>
-                <td><?= $index + 1; ?></td> <!-- Affiche l'ID basé sur l'index -->
-                <td><?= htmlspecialchars($shortcut['shortcut']); ?></td> <!-- Affiche le raccourci -->
-                <td><?= htmlspecialchars($shortcut['description']); ?></td> <!-- Affiche l'utilité -->
-            </tr>
-        <?php endforeach; ?>
+            <!-- Raccourcis Windows -->
+            <?php foreach ($shortcutWindows as $index => $shortcut): ?>
+                <tr>
+                    <td><?= $index + 1; ?></td>
+                    <td><?= htmlspecialchars($shortcut['shortcut']); ?></td>
+                    <td><?= htmlspecialchars($shortcut['description']); ?></td>
+                </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
-    <h2 class="text-center">Table des Raccourcis Clavier sur Vscode</h2>
 
+    <!-- Titre séparateur -->
+    <h2 class="text-center mt-4">Table des Raccourcis Clavier sur Vscode</h2>
+
+    <!-- Table pour raccourcis Vscode -->
     <table class="table table-bordered table-striped">
         <thead class="table-dark">
-            <tr class="w-100">
-                <th>ID</th>
+            <tr>
+                <th class="text-center">ID</th>
                 <th>Raccourci clavier</th>
                 <th>Utilité</th>
             </tr>
         </thead>
         <tbody>
-        <?php foreach ($shortcutsVscode as $index => $shortcut): ?>
-            <tr>
-                <td><?= $index + 1; ?></td> <!-- Affiche l'ID basé sur l'index -->
-                <td><?= htmlspecialchars($shortcut['shortcut']); ?></td> <!-- Affiche le raccourci -->
-                <td><?= htmlspecialchars($shortcut['description']); ?></td> <!-- Affiche l'utilité -->
-            </tr>
-        <?php endforeach; ?>
+            <?php foreach ($shortcutVscode as $index => $shortcut): ?>
+                <tr>
+                    <td><?= $index + 1; ?></td>
+                    <td><?= htmlspecialchars($shortcut['shortcut']); ?></td>
+                    <td><?= htmlspecialchars($shortcut['description']); ?></td>
+                </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
+
+
     <div class="my-5 text-center">
         <p>
-            Bon ! Assez de théorie... place à la pratique. C'est en marchant plusieurs fois sur un chemin qu'il finit par se dessiner ! 
+            Bon ! Assez de théorie... place à la pratique. C'est en marchant plusieurs fois sur un chemin qu'il finit par se dessiner !
         </p>
         <button type="button" class="btn btn-primary">
             <a class="text-white text-decoration-none" href="training">
@@ -77,4 +83,3 @@
         </button>
     </div>
 </div>
-

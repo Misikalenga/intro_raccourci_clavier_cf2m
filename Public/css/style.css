@@ -1,35 +1,45 @@
-body{
-    font-size: 1.1rem;
-}
-p{
-    font-weight: bold;
-
-}
-nav a:hover{
-    color: #f2f2f2 !important;
-    transition: .2s linear;
-}
-main{
-    background-color: #f2f2f2;
+body {
+  font-size: 1.1rem;
 }
 
-footer,nav{
-    background-color: #cccccc;
+p {
+  font-weight: bold;
+}
+nav a:hover {
+  color: #f2f2f2 !important;
+  transition: .2s linear;
+}
+main {
+  background-color: #f2f2f2;
 }
 
-.alert{
-    background-color:#cccccc;
-    width: 80%;
+footer,
+nav {
+  background-color: #cccccc;
+}
+
+.alert {
+  background-color: #cccccc;
+  width: 80%;
 }
 
 table > tbody > tr > td:nth-child(2) {
-    width: 24%; /* Définit la largeur de la deuxième colonne */
-    text-align: left; /* Centre le texte */
+  width: 24%; /* Définit la largeur de la deuxième colonne */
+  text-align: left; /* Centre le texte */
 }
 
 table > tbody > tr > td:nth-child(1) {
-    text-align: center; /* Centre le texte */
+  text-align: center; /* Centre le texte */
 }
-h2,h1{
-    margin:2% ;
+h2,
+h1 {
+  margin: 2%;
+}
+
+tr > th:nth-of-type(1) {
+  width: 1%;
+}
+
+.training p{
+    font-weight: 500;
 }

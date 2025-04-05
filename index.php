@@ -1,6 +1,7 @@
 <?php
-require_once 'Controllers/PublicController.php';
-require_once 'Models/ShortcutModel.php';
+require_once 'Controllers/pagesController.php';
+require_once 'Controllers/CrudController.php';
+require_once 'Models/CrudModel.php';
 
 
 define('ROOT', str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https://" : "http://") . $_SERVER['HTTP_HOST'] . $_SERVER["PHP_SELF"]));
@@ -19,14 +20,27 @@ switch ($url[0]) {
     case 'connexion':
         connexionPage();
         break;
-    case 'inscription':
+    case 'inscriptionPage':
         inscriptionPage();
         break;
+    case 'inscription':
+        $user = htmlspecialchars($_POST['user']);
+        $password = htmlspecialchars($_POST['password']);
+        if (
+            empty($user) ||
+            empty($password)
+        ) {
+            throw new Exception("Tous les champs doivent etre remplis !");
+        }
+        createCurrentUser($user, $password);
+        break;
+
     case 'intro':
-        introPage($pdo);
+        introPage();
         break;
     case 'training':
         pratiquePage();
+
         break;
     default:
         errorPage();

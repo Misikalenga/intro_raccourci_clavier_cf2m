@@ -1,6 +1,6 @@
 <?php
 require_once 'Controllers/Utilities.php';
-require_once 'Models/ShortcutModel.php';
+require_once 'Models/CrudModel.php';
 function homePage()
 {
     $data_page = [
@@ -25,17 +25,18 @@ function connexionPage()
     renderPage($data_page);
 }
 
-function inscriptionPage()
-{
+function inscriptionPage() {
     $data_page = [
-        'description' => 'Page de connexion',
-        'title' => 'Connexion',
+        'description' => 'Page d\'inscription',
+        'title' => 'Inscription',
         'view' => 'Views/pages/registerPage.php',
         'layout' => 'Views/commons/layout.php',
     ];
 
+    // Rendre la page avec les données
     renderPage($data_page);
 }
+
 function pratiquePage()
 {
     $data_page = [
@@ -47,17 +48,18 @@ function pratiquePage()
 
     renderPage($data_page);
 }
-function introPage($pdo)
+function introPage()
 {
-    $shortcuts = getWindowsShortcuts($pdo);
-    $shortcutsVscode = getVscodeShortcuts($pdo);
+    $shortcutWindows = getShortcutWindowsDB();
+    $shortcutVscode = getShortcutVscodeDB();
     $data_page = [
         'description' => 'Page d\'introduction',
         'title' => 'Introduction',
         'view' => 'Views/pages/introPage.php',
         'layout' => 'Views/commons/layout.php',
-        'shortcuts' => $shortcuts,
-        'shortcutsVscode' => $shortcutsVscode,
+        'shortcutWindows' => $shortcutWindows,
+        'shortcutVscode' => $shortcutVscode,
+
     ];
 
     renderPage($data_page);

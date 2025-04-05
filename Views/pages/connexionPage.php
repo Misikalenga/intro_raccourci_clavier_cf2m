@@ -3,9 +3,9 @@
         <div class="card-body">
             <h5 class="card-title text-center mb-4">Connexion</h5>
             <!-- Formulaire de connexion -->
-            <form action="/connexion" method="post" class="mb-3">
+            <form action="connexion" method="post" class="mb-3">
                 <div class="mb-3">
-                    <label for="login" class="form-label">Login</label>
+                    <label for="login" class="form-label">Nom d'utilisateur</label>
                     <input type="text" class="form-control form-control-lg" id="login" name="login" placeholder="Entrez votre identifiant">
                 </div>
                 <div class="mb-3">
@@ -16,7 +16,7 @@
             </form>
 
             <!-- Formulaire d'inscription -->
-            <form action="inscription" method="post">
+            <form action="inscriptionPage" method="post">
                 <button type="submit" class="btn btn-secondary btn-lg w-100">S'inscrire</button>
             </form>
         </div>
