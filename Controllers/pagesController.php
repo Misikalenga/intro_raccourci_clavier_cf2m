@@ -25,7 +25,8 @@ function connexionPage()
     renderPage($data_page);
 }
 
-function inscriptionPage() {
+function inscriptionPage()
+{
     $data_page = [
         'description' => 'Page d\'inscription',
         'title' => 'Inscription',
@@ -37,17 +38,7 @@ function inscriptionPage() {
     renderPage($data_page);
 }
 
-function pratiquePage()
-{
-    $data_page = [
-        'description' => 'Page de pratique',
-        'title' => 'Pratique',
-        'view' => 'Views/pages/pratiquePage.php',
-        'layout' => 'Views/commons/layout.php',
-    ];
 
-    renderPage($data_page);
-}
 function introPage()
 {
     $shortcutWindows = getShortcutWindowsDB();
@@ -60,6 +51,28 @@ function introPage()
         'shortcutWindows' => $shortcutWindows,
         'shortcutVscode' => $shortcutVscode,
 
+    ];
+
+    renderPage($data_page);
+}
+function pratiquePage()
+{
+    $data_page = [
+        'description' => 'Page de pratique',
+        'title' => 'Pratique',
+        'view' => 'Views/pages/pratiquePage.php',
+        'layout' => 'Views/commons/layout.php',
+    ];
+
+    renderPage($data_page);
+}
+function navigationPage()
+{
+    $data_page = [
+        'description' => 'Page de pratique',
+        'title' => 'Pratique',
+        'view' => 'Views/pages/navigationPage.php',
+        'layout' => 'Views/commons/layout.php',
     ];
 
     renderPage($data_page);

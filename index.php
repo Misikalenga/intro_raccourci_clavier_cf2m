@@ -42,6 +42,10 @@ switch ($url[0]) {
         pratiquePage();
 
         break;
+    case 'navigation':
+        navigationPage();
+
+        break;
     default:
         errorPage();
         break;

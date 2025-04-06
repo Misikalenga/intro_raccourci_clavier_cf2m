@@ -8,8 +8,8 @@
         mais aussi d'éviter les distractions et d'améliorer la concentration.
         Que ce soit pour naviguer rapidement entre les fichiers, effectuer des
         actions comme couper, copier, coller, ou gérer les fenêtres et les bureaux
-        virtuels, les raccourcis clavier vous permettent d'être plus efficace et de
-        vous concentrer sur l'essentiel : <span class="text-danger">CODER</span>
+        virtuels, les raccourcis clavier vous permettent d'être plus efficaces et de
+        vous concentrer sur l'essentiel : <span class="text-danger">CODER</span>.
     </p>
     <p class="text-center">
         En intégrant ces raccourcis dans votre quotidien, vous pourrez améliorer
@@ -20,8 +20,8 @@
     </p>
     <div class="alert">
         <p>
-            <strong>Disclaimer:</strong> Cette liste de raccourcis clavier est propre à mon usage personnel. Elle ne représente
-            qu'une petite partie des raccourcis disponibles dans le système Windows et l'IDE VsCode. Il existe des centaines d'autres raccourcis
+            <strong>Avertissement :</strong> Cette liste de raccourcis clavier est propre à mon usage personnel. Elle ne représente
+            qu'une petite partie des raccourcis disponibles dans le système Windows et l'IDE VS Code. Il existe des centaines d'autres raccourcis
             clavier qui n'ont pas été ajoutés ici, car ils ne sont pas nécessaires dans mon flux de travail quotidien. Si vous
             souhaitez explorer la totalité des raccourcis clavier de Windows, vous pouvez consulter le site officiel :
             <a href="https://fr.windows-office.net/?p=27067" target="_blank" class="link-primary">Raccourcis clavier dans Windows</a>.
@@ -49,9 +49,9 @@
     </table>
 
     <!-- Titre séparateur -->
-    <h2 class="text-center mt-4">Table des Raccourcis Clavier sur Vscode</h2>
+    <h2 class="text-center mt-4">Table des Raccourcis Clavier sur VS Code</h2>
 
-    <!-- Table pour raccourcis Vscode -->
+    <!-- Table pour raccourcis VS Code -->
     <table class="table table-bordered table-striped">
         <thead class="table-dark">
             <tr>

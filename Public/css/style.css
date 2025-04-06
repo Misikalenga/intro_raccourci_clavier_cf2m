@@ -11,6 +11,7 @@ nav a:hover {
 }
 main {
   background-color: #f2f2f2;
+
 }
 
 footer,
@@ -24,8 +25,8 @@ nav {
 }
 
 table > tbody > tr > td:nth-child(2) {
-  width: 24%; /* Définit la largeur de la deuxième colonne */
-  text-align: left; /* Centre le texte */
+  width: 24%; 
+  text-align: left; 
 }
 
 table > tbody > tr > td:nth-child(1) {
@@ -43,3 +44,14 @@ tr > th:nth-of-type(1) {
 .training p{
     font-weight: 500;
 }
+
+.editor {
+  font-family: monospace;
+  height: 200px;
+  resize: vertical;
+}
+
+.feedback {
+  font-weight: bold;
+}
+
