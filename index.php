@@ -40,11 +40,12 @@ switch ($url[0]) {
         break;
     case 'training':
         pratiquePage();
-
         break;
     case 'navigation':
         navigationPage();
-
+        break;
+    case 'vscode':
+        vsCodePage();
         break;
     default:
         errorPage();

@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax'])) {
             <div id="result-editor" class="fw-bold"></div>
         </div>
     </div>
-
+<hr style="height: 5px; background-color: black; margin: 3rem 0;">
     <!-- Exercice 2 -->
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -132,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax'])) {
             <div id="result-editor1" class="fw-bold"></div>
         </div>
     </div>
-
+<hr style="height: 5px; background-color: black; margin: 3rem 0;">
     <!-- Exercice 3 -->
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -156,7 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax'])) {
             <div id="result-editor2" class="fw-bold"></div>
         </div>
     </div>
-
+<hr style="height: 5px; background-color: black; margin: 3rem 0;">
     <!-- Exercice 4 -->
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -180,7 +180,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax'])) {
             <div id="result-editor3" class="fw-bold"></div>
         </div>
     </div>
-
+<hr style="height: 5px; background-color: black; margin: 3rem 0;">
     <!-- Exercice 5 -->
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -224,7 +224,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax'])) {
         </div>
     </div>
 
-    <hr style="height: 5px; background-color: black; margin: 5rem 0;">
+    <hr style="height: 5px; background-color: black; margin: 3rem 0;">
 
     <div class="my-5 text-center">
         <p>
@@ -290,10 +290,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax'])) {
         document.getElementById('startStopButton').textContent = 'Démarrer'; // Remettre le texte du bouton
     });
 </script>
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>

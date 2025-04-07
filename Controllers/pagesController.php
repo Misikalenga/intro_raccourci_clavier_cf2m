@@ -77,6 +77,16 @@ function navigationPage()
 
     renderPage($data_page);
 }
+function vsCodePage(){
+    $data_page = [
+        'description' => 'Page de pratique',
+        'title' => 'Pratique',
+        'view' => 'Views/pages/vsCodePage.php',
+        'layout' => 'Views/commons/layout.php',
+    ];
+
+    renderPage($data_page);
+}
 function errorPage()
 {
     $data_page = [
