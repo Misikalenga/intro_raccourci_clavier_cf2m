@@ -5,7 +5,7 @@
 <!-- Exercice 1.0 -->
 <div class="card shadow mb-4">
     <div class="card-body">
-        <h4>Exercice 1.0 : Ouvrir une page internet et Explorer des fichiers</h4>
+        <h4>Exercice 1.5 : Ouvrir une page internet et Explorer des fichiers</h4>
         <ol class="mb-0">
             <li>Ouvrez la boîte de dialogue "Exécuter" avec <kbd>Win + R</kbd>.</li>
             <li>Tapez <code>chrome</code> et appuyez sur <kbd>Entrée</kbd> pour ouvrir le navigateur Chrome.</li>
@@ -20,7 +20,7 @@
 <!-- Exercice 1.1 -->
 <div class="card shadow mb-4">
     <div class="card-body">
-        <h4>Exercice 1.1 : Manipuler plusieurs onglets</h4>
+        <h4>Exercice 1.6 : Manipuler plusieurs onglets</h4>
         <ol class="mb-0">
             <li>Utilisez <kbd>Alt + Tab</kbd> pour basculer vers la fenêtre Chrome.</li>
             <li>Ouvrez un nouvel onglet dans Chrome avec <kbd>Ctrl + T</kbd>.</li>
@@ -35,7 +35,7 @@
 <!-- Exercice 1.2 -->
 <div class="card shadow mb-4">
     <div class="card-body">
-        <h4>Exercice 1.2 : Gérer et restaurer des onglets</h4>
+        <h4>Exercice 1.7 : Gérer et restaurer des onglets</h4>
         <ol class="mb-0">
             <li>Sélectionnez un des onglets ouverts et accédez à Google en tapant l'URL dans la barre d'adresse.</li>
             <li>Fermez cet onglet avec <kbd>Ctrl + W</kbd>.</li>
@@ -50,7 +50,7 @@
 <!-- Exercice 1.3 -->
 <div class="card shadow mb-4">
     <div class="card-body">
-        <h4>Exercice 1.3 : Gérer les bureaux virtuels</h4>
+        <h4>Exercice 1.8 : Gérer les bureaux virtuels</h4>
         <ol class="mb-0">
             <li>Créez un nouveau bureau virtuel avec <kbd>Win + Ctrl + D</kbd>.</li>
             <li>Répétez cette action jusqu'à avoir **4 bureaux virtuels au total**.</li>
