@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax'])) {
     </div>
 
     <!-- Zone de texte 1 -->
-    <div class="mb-3">
+    <div class="mb-3 zone_edition">
         <label for="editor" class="form-label">🧪 Zone d'édition</label>
         <textarea class="form-control shadow border border-dark editor h-50 mb-3" name="editor" id="editor">Je suis un texte</textarea>
 
@@ -124,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax'])) {
     </div>
 
     <!-- Zone de texte 2 -->
-    <div class="mb-3">
+    <div class="mb-3 zone_edition">
         <label for="editor1" class="form-label">🧪 Zone d'édition</label>
         <textarea class="form-control shadow border border-dark editor h-50 mb-3" name="editor1" id="editor1">Je suis un texte</textarea>
 
@@ -148,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax'])) {
     </div>
 
     <!-- Zone de texte 3 -->
-    <div class="mb-3">
+    <div class="mb-3 zone_edition">
         <label for="editor2" class="form-label">🧪 Zone d'édition</label>
         <textarea class="form-control shadow border border-dark editor h-50 mb-3" name="editor2" id="editor2">Je suis un texte. Mais pas que, je suis un ensemble lettres et de mots qui forme un texte.</textarea>
 
@@ -172,7 +172,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax'])) {
     </div>
 
     <!-- Zone de texte 4 -->
-    <div class="mb-3">
+    <div class="mb-3 zone_edition">
         <label for="editor3" class="form-label">🧪 Zone d'édition</label>
         <textarea class="form-control shadow border border-dark editor h-50 mb-3" name="editor3" id="editor3">Lorem ipsum dolor sit amet.</textarea>
 
@@ -200,7 +200,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax'])) {
     </div>
 
     <!-- Zone de texte 5 -->
-    <div class="mb-3">
+    <div class="mb-3 zone_edition">
         <label for="editor4" class="form-label">🧪 Zone d'édition</label>
         <textarea class="form-control shadow border border-dark editor h-50 mb-3" name="editor4" id="editor4">tzu Daondez, czopyiexz ccettex liagne: "<butztonez czlass="btn pzimary">cliquex içi</butztone>", zxupprimezx rxeussxzxi une zxpartix dux Fzéoliciatxztionxs, texxte avzec! backsppzacezx, zxannulezx zxette aqs xpartx zavec ctrz+zz zx.</textarea>
 

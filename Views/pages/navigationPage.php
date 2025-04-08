@@ -1,5 +1,5 @@
 <div class="container py-5 ">
-    <h1 class="text-center">Pratique sur le Bureau</h1>
+    <h1 class="text-center mb-5">Pratique sur le Bureau</h1>
 
 
     <!-- Exercice 1.0 -->
