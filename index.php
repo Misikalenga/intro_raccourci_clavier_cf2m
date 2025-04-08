@@ -1,6 +1,6 @@
 <?php
 require_once 'Controllers/pagesController.php';
-require_once 'Controllers/CrudController.php';
+// require_once 'Controllers/CrudController.php';
 require_once 'Models/CrudModel.php';
 
 

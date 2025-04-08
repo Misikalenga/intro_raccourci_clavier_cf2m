@@ -1,5 +1,5 @@
 <div class="container mt-5 d-flex flex-column align-items-center">
-    <h1 class="text-center">Introduction</h1>
+    <h1 class="text-center mb-5">Introduction</h1>
     <p class="text-center">
         Les raccourcis clavier sont des outils essentiels pour tout développeur,
         car ils permettent de gagner un temps précieux en réduisant la dépendance
@@ -19,13 +19,16 @@
         tâches et projets.
     </p>
     <div class="alert">
-        <p>
+        <div class="alert d-flex justify-content-center" style="margin: 1rem auto; text-align: center;">
+
+            <aside class="text-center border rounded p-4 w-75" style="background-color: #cccccc; font-weight: bold; border-width: 1px; ">
             <strong>Avertissement :</strong> Cette liste de raccourcis clavier est propre à mon usage personnel. Elle ne représente
             qu'une petite partie des raccourcis disponibles dans le système Windows et l'IDE VS Code. Il existe des centaines d'autres raccourcis
             clavier qui n'ont pas été ajoutés ici, car ils ne sont pas nécessaires dans mon flux de travail quotidien. Si vous
             souhaitez explorer la totalité des raccourcis clavier de Windows, vous pouvez consulter le site officiel :
             <a href="https://fr.windows-office.net/?p=27067" target="_blank" class="link-primary">Raccourcis clavier dans Windows</a>.
-        </p>
+            </aside>
+        </div>
     </div>
     <h2 class="text-center">Table des Raccourcis Clavier sur Windows</h2>
     <table class="table table-bordered table-striped">
@@ -81,5 +84,6 @@
                 Je pratique <span class="ms-2">&rarr;</span>
             </a>
         </button>
+
     </div>
 </div>

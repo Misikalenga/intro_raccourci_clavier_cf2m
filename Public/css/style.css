@@ -1,27 +1,24 @@
-body {
+body{
   font-size: 1.1rem;
 }
-
-p {
-  font-weight: bold;
-}
-nav a:hover {
-  color: #f2f2f2 !important;
-  transition: .2s linear;
-}
-main {
-  background-color: #f2f2f2;
-
-}
-
 footer,
 nav {
   background-color: #cccccc;
 }
 
-.alert {
-  background-color: #cccccc;
-  width: 80%;
+nav a:hover {
+  color: #1a62ff !important;
+  transition: .2s linear;
+}
+
+ol li, .complement-shortcuts li {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+p{
+  font-size: 1.1rem;
+  font-weight: bold;
 }
 
 table > tbody > tr > td:nth-child(2) {
@@ -32,26 +29,7 @@ table > tbody > tr > td:nth-child(2) {
 table > tbody > tr > td:nth-child(1) {
   text-align: center; /* Centre le texte */
 }
-h2,
-h1 {
-  margin: 2%;
-}
 
 tr > th:nth-of-type(1) {
   width: 1%;
 }
-
-.training p{
-    font-weight: 500;
-}
-
-.editor {
-  font-family: monospace;
-  height: 200px;
-  resize: vertical;
-}
-
-.feedback {
-  font-weight: bold;
-}
-

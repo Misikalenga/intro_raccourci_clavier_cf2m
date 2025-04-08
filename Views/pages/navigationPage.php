@@ -64,7 +64,7 @@
 
     <!-- Raccourcis pour les développeurs -->
     <div class="card shadow mb-4">
-        <div class="card-body">
+        <div class="card-body complement-shortcuts">
             <h4>Raccourcis pratiques pour les développeurs</h4>
             <ul class="mb-0">
                 <li><kbd>F12</kbd> : Ouvrir les outils de développement dans un navigateur.</li>
@@ -77,7 +77,7 @@
 
     <!-- Récapitulatif des raccourcis en + très utiles -->
     <div class="card shadow mb-4">
-        <div class="card-body">
+        <div class="card-body complement-shortcuts">
             <h4>Raccourcis pratiques et indispensables</h4>
             <ul class="mb-0">
                 <li><kbd>F11</kbd> : Passez en mode plein écran dans un navigateur ou une application. Appuyez à nouveau sur <kbd>F11</kbd> pour revenir à l'écran normal.</li>
@@ -91,14 +91,13 @@
     </div>
     <hr style="height: 5px; background-color: black; margin: 5rem 0;">
 
-    <div class="my-5 text-center">
-        <p>
-            Bravo ! Vous avez terminé cette deuxième partie. Vous avez appris à utiliser les raccourcis clavier pour manipuler des ongles et des fenêtres. Ces compétences vous seront précieuses dans votre parcours de développeur web.
-        </p>
-        <button type="button" class="btn btn-primary">
-            <a class="text-white text-decoration-none" href="vscode">
-                Continuer
-            </a>
+    <div class="my-4 text-center">
+
+        <button type="button" class="btn btn-primary" onclick="window.location.href='training'">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="btn btn-primary" onclick="window.location.href='vscode'">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
         </button>
     </div>
 

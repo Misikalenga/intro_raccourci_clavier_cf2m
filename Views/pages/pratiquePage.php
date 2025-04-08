@@ -3,24 +3,24 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax'])) {
     $editorId = $_POST['editorId'];  // Identifiant de la zone de texte
     $valeurEntree = trim($_POST["editorValue"]);
-    $reponse = ['etat' => 'error', 'message' => '❌ Valeur incorrecte. Veuillez réessayer.'];
+    $reponse = ['etat' => 'error', 'message' => 'Valeur incorrecte ❌'];
 
     // Exemple de valeurs attendues différentes pour chaque zone de texte
     $valeursAttendues = [
         'editor' => [
-            "<button class=\"btn btn-primary\">Clique ici</button>" => "🎉 Bravo, c’est la bonne réponse ✅",
+            "<button class=\"btn btn-primary\">Clique ici</button>" => "Bonne réponse ✅",
         ],
         'editor1' => [
-            "Je suis un" => "🎉 Bravo, c’est la bonne réponse ✅",
+            "Je suis un" => "Bonne réponse ✅",
         ],
         'editor2' => [
-            "Je suis un texte." => "🎉 Bravo, c’est la bonne réponse ✅",
+            "Je suis un texte." => "Bonne réponse ✅",
         ],
         'editor3' => [
-            "Lorem" => "🎉 Bravo, c’est la bonne réponse ✅"
+            "Lorem" => "Bonne réponse ✅"
         ],
         'editor4' => [
-            "Félicitations, tu as réussi !" => "🎉 Bravo, c’est la bonne réponse ✅"
+            "Félicitations, tu as réussi !" => "Bonne réponse ✅"
         ]
     ];
 
@@ -76,10 +76,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax'])) {
 
 <div class="container py-5">
     <h1 class="text-center">Pratique sur zone de texte</h1>
-    <div class="alert" style="margin: 2rem auto; text-align: center;">
-        <p class="text-center" style="font-weight: bold;">
+    <div class="alert d-flex justify-content-center" style="margin: 2rem auto; text-align: center;">
+
+        <aside class="text-center border rounded p-4 w-75" style="background-color: #cccccc; font-weight: bold; border-width: 1px; ">
             <strong>⚠️ Attention :</strong> La triche ne sert à rien ! Prenez le temps de suivre les étapes avec sérieux. Les raccourcis clavier que vous apprendrez ici sont essentiels dans le développement web et vous feront gagner en efficacité. Jouez le jeu, car maîtriser ces outils est un véritable atout pour travailler rapidement et intelligemment.
-        </p>
+        </aside>
     </div>
 
     <!-- Exercice 1 -->
@@ -102,14 +103,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax'])) {
     <!-- Zone de texte 1 -->
     <div class="mb-3">
         <label for="editor" class="form-label">🧪 Zone d'édition</label>
-        <textarea class="form-control editor h-50 mb-3" name="editor" id="editor">Je suis un texte</textarea>
+        <textarea class="form-control shadow border border-dark editor h-50 mb-3" name="editor" id="editor">Je suis un texte</textarea>
 
         <div class="d-flex align-items-center gap-3">
-            <button type="button" class="btn btn-success btn-valider" data-editor="editor">Valider</button>
+            <button type="button" class="btn btn-primary btn-valider" data-editor="editor">Valider</button>
             <div id="result-editor" class="fw-bold"></div>
         </div>
     </div>
-<hr style="height: 5px; background-color: black; margin: 3rem 0;">
+    <hr style="height: 5px; background-color: black; margin: 3rem 0;">
     <!-- Exercice 2 -->
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -125,14 +126,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax'])) {
     <!-- Zone de texte 2 -->
     <div class="mb-3">
         <label for="editor1" class="form-label">🧪 Zone d'édition</label>
-        <textarea class="form-control editor h-50 mb-3" name="editor1" id="editor1">Je suis un texte</textarea>
+        <textarea class="form-control shadow border border-dark editor h-50 mb-3" name="editor1" id="editor1">Je suis un texte</textarea>
 
         <div class="d-flex align-items-center gap-3">
-            <button type="button" class="btn btn-success btn-valider" data-editor="editor1">Valider</button>
+            <button type="button" class="btn btn-primary btn-valider" data-editor="editor1">Valider</button>
             <div id="result-editor1" class="fw-bold"></div>
         </div>
     </div>
-<hr style="height: 5px; background-color: black; margin: 3rem 0;">
+    <hr style="height: 5px; background-color: black; margin: 3rem 0;">
     <!-- Exercice 3 -->
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -149,14 +150,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax'])) {
     <!-- Zone de texte 3 -->
     <div class="mb-3">
         <label for="editor2" class="form-label">🧪 Zone d'édition</label>
-        <textarea class="form-control editor h-50 mb-3" name="editor2" id="editor2">Je suis un texte. Mais pas que, je suis un ensemble lettres et de mots qui forme un texte.</textarea>
+        <textarea class="form-control shadow border border-dark editor h-50 mb-3" name="editor2" id="editor2">Je suis un texte. Mais pas que, je suis un ensemble lettres et de mots qui forme un texte.</textarea>
 
         <div class="d-flex align-items-center gap-3">
-            <button type="button" class="btn btn-success btn-valider" data-editor="editor2">Valider</button>
+            <button type="button" class="btn btn-primary btn-valider" data-editor="editor2">Valider</button>
             <div id="result-editor2" class="fw-bold"></div>
         </div>
     </div>
-<hr style="height: 5px; background-color: black; margin: 3rem 0;">
+    <hr style="height: 5px; background-color: black; margin: 3rem 0;">
     <!-- Exercice 4 -->
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -173,14 +174,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax'])) {
     <!-- Zone de texte 4 -->
     <div class="mb-3">
         <label for="editor3" class="form-label">🧪 Zone d'édition</label>
-        <textarea class="form-control editor h-50 mb-3" name="editor3" id="editor3">Lorem ipsum dolor sit amet.</textarea>
+        <textarea class="form-control shadow border border-dark editor h-50 mb-3" name="editor3" id="editor3">Lorem ipsum dolor sit amet.</textarea>
 
         <div class="d-flex align-items-center gap-3">
-            <button type="button" class="btn btn-success btn-valider" data-editor="editor3">Valider</button>
+            <button type="button" class="btn btn-primary btn-valider" data-editor="editor3">Valider</button>
             <div id="result-editor3" class="fw-bold"></div>
         </div>
     </div>
-<hr style="height: 5px; background-color: black; margin: 3rem 0;">
+    <hr style="height: 5px; background-color: black; margin: 3rem 0;">
     <!-- Exercice 5 -->
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -201,10 +202,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax'])) {
     <!-- Zone de texte 5 -->
     <div class="mb-3">
         <label for="editor4" class="form-label">🧪 Zone d'édition</label>
-        <textarea class="form-control editor h-50 mb-3" name="editor4" id="editor4">tzu Daondez, czopyiexz ccettex liagne: "<butztonez czlass="btn pzimary">cliquex içi</butztone>", zxupprimezx rxeussxzxi une zxpartix dux Fzéoliciatxztionxs, texxte avzec! backsppzacezx, zxannulezx zxette aqs xpartx zavec ctrz+zz zx.</textarea>
+        <textarea class="form-control shadow border border-dark editor h-50 mb-3" name="editor4" id="editor4">tzu Daondez, czopyiexz ccettex liagne: "<butztonez czlass="btn pzimary">cliquex içi</butztone>", zxupprimezx rxeussxzxi une zxpartix dux Fzéoliciatxztionxs, texxte avzec! backsppzacezx, zxannulezx zxette aqs xpartx zavec ctrz+zz zx.</textarea>
 
         <div class="d-flex align-items-center gap-3">
-            <button type="button" class="btn btn-success btn-valider" data-editor="editor4">Valider</button>
+            <button type="button" class="btn btn-primary btn-valider" data-editor="editor4">Valider</button>
             <div id="result-editor4" class="fw-bold"></div>
         </div>
     </div>
@@ -225,17 +226,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax'])) {
     </div>
 
     <hr style="height: 5px; background-color: black; margin: 3rem 0;">
+    <div class="container mt-4 d-flex text-center justify-content-center gap-2">
+        <button type="button" class="btn btn-primary" onclick="window.location.href='intro'">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </button>
 
-    <div class="my-5 text-center">
-        <p>
-            Bravo ! Vous avez terminé cette première partie. Vous avez appris à utiliser les raccourcis clavier pour manipuler du texte. Ces compétences vous seront précieuses dans votre parcours de développeur web.
-        </p>
-        <button type="button" class="btn btn-primary">
-            <a class="text-white text-decoration-none" href="navigation">
-                Continuer
-            </a>
+        <button type="button" class="btn btn-primary" onclick="window.location.href='navigation'">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
         </button>
     </div>
+
 </div>
 </div>
 
