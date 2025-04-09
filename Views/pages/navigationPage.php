@@ -1,7 +1,12 @@
 <div class="container py-5 ">
     <h1 class="text-center mb-5">Pratique sur le Bureau</h1>
 
+    <div class="alert d-flex justify-content-center" style="margin: 2rem auto; text-align: center;">
 
+        <aside class="text-center border rounded p-4 w-75" style="background-color: #cccccc; font-weight: bold; border-width: 1px; ">
+            <strong class="text-primary">Information :</strong> Ici, il n'est pas nécessaire d'interagir avec un éditeur, car cela concerne la manipulation orientée navigation des onglets et des dossiers du bureau.
+        </aside>
+    </div>
     <!-- Exercice 1.0 -->
     <div class="card shadow mb-4">
         <div class="card-body">
