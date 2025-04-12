@@ -2,7 +2,7 @@
 
 // Définition des constantes
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'testt');
+define('DB_NAME', 'raccourci_projet');
 define('DB_USER', 'root');
 define('DB_PASSWORD', '');
 
@@ -19,7 +19,7 @@ function setDB() {
             ];
             $pdo = new PDO($dsn, DB_USER, DB_PASSWORD, $options);
         } catch (PDOException $e) {
-            die("Erreur lors de la connexion : " . htmlspecialchars($e->getMessage()));
+            die("Erreur lors de la connexion : " . ($e->getMessage()));
         }
     }
     return $pdo;

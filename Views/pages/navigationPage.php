@@ -13,7 +13,7 @@
             <h4>Exercice 1.5 : Ouvrir une page internet et Explorer des fichiers</h4>
             <ol class="mb-0">
                 <li>Ouvrez la boîte de dialogue "Exécuter" avec <kbd>Win + R</kbd>.</li>
-                <li>Tapez <code>chrome</code> et appuyez sur <kbd>Entrée</kbd> pour ouvrir le navigateur Chrome.</li>
+                <li>Tapez <code class="fs-5">"chrome"</code> et appuyez sur <kbd>Entrée</kbd> pour ouvrir le navigateur Chrome.</li>
                 <li>Retournez sur votre bureau en utilisant <kbd>Win + D</kbd>.</li>
                 <li>Ouvrez une nouvelle fenêtre de l'Explorateur de fichiers avec <kbd>Ctrl + N</kbd>.</li>
             </ol>
