@@ -87,6 +87,16 @@ function vsCodePage(){
 
     renderPage($data_page);
 }
+function outroPage(){
+    $data_page = [
+        'description' => 'Page de fin',
+        'title' => 'Outro',
+        'view' => 'Views/pages/outroPage.php',
+        'layout' => 'Views/commons/layout.php',
+    ];
+
+    renderPage($data_page);
+}
 function errorPage()
 {
     $data_page = [

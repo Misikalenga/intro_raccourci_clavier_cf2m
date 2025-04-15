@@ -194,7 +194,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax'])) {
                     <kbd>Ctrl + A</kbd>, <kbd>Ctrl + X</kbd>, <kbd>Ctrl + C</kbd>, <kbd>Ctrl + V</kbd>, <kbd>Backspace</kbd>, <kbd>Ctrl + Z</kbd>, <kbd>Ctrl + Y</kbd>, <kbd>Ctrl + →</kbd>, <kbd>Ctrl + ←</kbd>, <kbd>Shift + →</kbd>, <kbd>Shift + ←</kbd>, <kbd>Ctrl + Shift + →</kbd>, <kbd>Ctrl + Shift + ←</kbd>, <kbd>Ctrl + Backspace</kbd>, et <kbd>Shift + Click</kbd>,
                     trouvez le moyen d'afficher le texte suivant :<br> <code class="fs-5">Félicitations, tu as réussi !</code>
                 </li>
-                <li>Utilisez le chronomètre pour vous challengez, le record actuel est de <kbd>01:38:245</kbd> Evidemment, il ne sera pas possible de le battre...</li>
+                <li>Utilisez le chronomètre pour vous challengez, le record actuel est de <kbd>00:44:511</kbd> Evidemment, il ne sera pas possible de le battre...</li>
             </ol>
         </div>
     </div>

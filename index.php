@@ -47,6 +47,9 @@ switch ($url[0]) {
     case 'vscode':
         vsCodePage();
         break;
+    case 'outro':
+        outroPage();
+        break;
     default:
         errorPage();
         break;
