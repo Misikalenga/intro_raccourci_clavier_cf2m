@@ -7,6 +7,8 @@ function createCurrentUser($pdo, $user, $password) {
         header('Location: connexionPage');
         exit();
     } else {
-        throw new Exception("Échec lors de l'inscription !");
+        $_SESSION['error_message'] = "Nom d'utilisateur déjà pris.";
+        header('Location: inscriptionPage'); // Redirige vers la page d'inscription
+        exit();
     }
 }

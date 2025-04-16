@@ -1,10 +1,10 @@
 <?php
 session_start(); // Démarre la session
-
 require_once 'Controllers/pagesController.php';
 require_once 'Controllers/CrudController.php';
 require_once 'Models/CrudModel.php';
 
+// showArray($_SESSION['user']);
 
 define('ROOT', str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https://" : "http://") . $_SERVER['HTTP_HOST'] . $_SERVER["PHP_SELF"]));
 
@@ -16,12 +16,9 @@ if (empty($_GET['page'])) {
 }
 
 
-
 switch ($url[0]) {
     case 'home':
         homePage();
-        showArray($_SESSION);
-
         break;
     case 'connexionPage':
         connexionPage();
@@ -30,21 +27,39 @@ switch ($url[0]) {
         $data = getUser($pdo, $_POST['login']);
 
         if ($data && $data['user'] === $_POST['login'] && password_verify($_POST['password'], $data['password'])) {
+            $_SESSION['user'] = $data['user'];
             $_SESSION['statue'] = "connecté";
-            echo "ok";
-            header('Location:home');
+            header('Location: home'); // Rediriger vers la page d'accueil après connexion
             exit();
         } else {
+            $_SESSION['user'] = "lambda";
             $_SESSION['statue'] = "non connecté";
-            header('Location:connexionPage');
+            $_SESSION['error_message'] = "Ce compte n'existe pas";
+            header('Location: connexionPage');
+            exit();
         }
-        break;
+
     case 'inscriptionPage':
         inscriptionPage();
         break;
+
     case 'inscription':
-        createCurrentUser($pdo, $_POST['user'], $_POST['password']);
-        break;
+        $data = getUser($pdo, $_POST['user']);
+
+        if ($data) {
+            $_SESSION['error_message'] = "Ce nom d'utilisateur existe déjà.";
+            header('Location: inscriptionPage'); // Redirection vers l'inscription si déjà existant
+            exit();
+        } else {
+            $_SESSION['success_message'] = "Vous avez créé votre compte !";
+            createCurrentUser($pdo, $_POST['user'], $_POST['password']); // Enregistre l'utilisateur
+
+
+            header('Location: connexionPage'); // Redirige vers la page de connexion au lieu de l'accueil
+            exit();
+        }
+
+
     case 'intro':
         introPage($pdo);
         break;

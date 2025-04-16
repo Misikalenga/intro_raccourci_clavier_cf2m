@@ -7,7 +7,7 @@
     <meta name="description" content="<?= $description ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?=ROOT?>/Public/css/style.css">
+    <link rel="stylesheet" href="<?=ROOT?>Public/css/style.css">
     <title><?= $title ?></title>
 </head>
 

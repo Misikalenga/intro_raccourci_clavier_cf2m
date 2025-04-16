@@ -5,13 +5,24 @@ require_once 'PdoModel.php';
 // requete pour inséré des utilisateur dans la base de données
 function registerNewUserDB($pdo, $user, $password)
 {
-    $req = ('INSERT INTO users (user, password) VALUES (:user, :password)');
+    // Vérifier si le nom d'utilisateur existe déjà
+    $query = $pdo->prepare("SELECT COUNT(*) FROM users WHERE user = :user");
+    $query->execute(['user' => $user]);
+    $exists = $query->fetchColumn();
+
+    if ($exists > 0) {
+        return false; // Retourne false si l'utilisateur existe déjà
+    }
+
+    // Insérer le nouvel utilisateur
+    $req = "INSERT INTO users (user, password) VALUES (:user, :password)";
     $stmt = $pdo->prepare($req);
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
     $stmt->bindParam(':user', $user, PDO::PARAM_STR);
     $stmt->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
     $stmt->execute();
     $stmt->closeCursor();
+    
     return true;
 }
 

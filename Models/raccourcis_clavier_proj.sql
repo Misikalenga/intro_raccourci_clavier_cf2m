@@ -54,17 +54,17 @@ INSERT INTO `raccourcis` (`id`, `shortcut`, `description`) VALUES
 (14, 'Ctrl + Tab', 'Passer d\'un onglet à l\'autre dans une application à onglets.'),
 (15, 'Ctrl + → ou ←', 'Déplacer le curseur d\'un mot à l\'autre, à gauche ou à droite.'),
 (16, 'Ctrl + Backspace', 'Supprimer le mot précédent.'),
-(18, 'Ctrl + Shift + → ou ←', 'Sélectionner du texte mot par mot à gauche ou à droite.'),
-(19, 'Windows + E', 'Ouvrir l\'explorateur de fichiers.'),
-(20, 'Windows + D', 'Afficher ou masquer le bureau.'),
-(21, 'Windows + P', 'Sélectionner le mode d\'affichage pour une présentation.'),
-(22, 'Windows + Ctrl + → ou ←', 'Passer d\'un bureau virtuel à un autre à droite/gauche.'),
-(23, 'Alt + Tab', 'Passer d\'une application ou fenêtre à une autre.'),
-(24, 'Shift + → ou ←', 'Sélectionner un texte caractère par caractère.'),
-(25, 'Shift + Clic', 'Sélectionner plusieurs éléments dans une liste ou une fenêtre.'),
-(26, 'F2', 'Renommer l\'élément sélectionné.'),
-(27, 'F12', 'Ouvre les outils de développement du navigateur.'),
-(28, 'Ctrl + Shift + C', 'Ouvre les outils de développement du navigateur et active l\'outil de sélection d\'éléments.');
+(17, 'Ctrl + Shift + → ou ←', 'Sélectionner du texte mot par mot à gauche ou à droite.'),
+(18, 'Windows + E', 'Ouvrir l\'explorateur de fichiers.'),
+(19, 'Windows + D', 'Afficher ou masquer le bureau.'),
+(20, 'Windows + P', 'Sélectionner le mode d\'affichage pour une présentation.'),
+(21, 'Windows + Ctrl + → ou ←', 'Passer d\'un bureau virtuel à un autre à droite/gauche.'),
+(22, 'Alt + Tab', 'Passer d\'une application ou fenêtre à une autre.'),
+(23, 'Shift + → ou ←', 'Sélectionner un texte caractère par caractère.'),
+(24, 'Shift + Clic', 'Sélectionner plusieurs éléments dans une liste ou une fenêtre.'),
+(25, 'F2', 'Renommer l\'élément sélectionné.'),
+(26, 'F12', 'Ouvre les outils de développement du navigateur.'),
+(27, 'Ctrl + Shift + C', 'Ouvre les outils de développement du navigateur et active l\'outil de sélection d\'éléments.');
 
 -- --------------------------------------------------------
 
@@ -90,8 +90,9 @@ INSERT INTO `raccourcis_vscode` (`id`, `shortcut`, `description`) VALUES
 (5, 'Ctrl + /', 'Commenter / Décommenter la ligne'),
 (6, 'Ctrl + Tab', 'Naviguer entre les fichiers récemment ouverts'),
 (7, 'Ctrl + Shift + → ou ←', 'Sélectionner mot par mot'),
-(8, 'Ctrl + ``', 'Basculer le terminal intégré'),
-(9, 'Ctrl + Clic', 'Sélectionner plusieurs éléments individuellement');
+(8, 'Ctrl + ù', 'Basculer le terminal intégré'),
+(9, 'Ctrl + Clic', 'Sélectionner plusieurs éléments individuellement'),
+(10, 'Ctrl + D', 'Sélectionner les occurences du mot un par un');
 
 -- --------------------------------------------------------
 

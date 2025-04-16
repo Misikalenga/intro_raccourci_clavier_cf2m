@@ -7,8 +7,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex align-items-center">
-
-
                     <li class="nav-item self-end">
                         <a class=" nav-link text-end active fs-5 p-0" href="home"><img class=" w-25" src="Public\img\cf2m-removebg-preview.png" alt=""></a>
                     </li>
@@ -27,15 +25,16 @@
                     </li>
                 </ul>
                 <!-- Connexion pour grands écrans -->
-                <ul class="navbar-nav ms-auto d-none d-lg-flex">
-                    <li class="nav-item">
-                        <?php if(empty($_SESSION)): ?>
-                        <a href="connexionPage" class="text-decoration-none ">Connexion</a>
-                        <?php else: ?>
-                        <a href="destroy" class="text-decoration-none ">Déconnexion</a>
-                        <?php endif; ?>
-                    </li>
+                <ul class="navbar-nav d-flex align-items-center">
+                    <?php if (isset($_SESSION['user']) && $_SESSION['user'] !== "lambda"): ?>
+
+                        <li class="nav-item" style="width:250px"><a href="destroy" class="text-decoration-none text-dark"><b class="fst-italic">Bonjour, <?php echo $_SESSION['user']; ?></b> <br> Déconnexion</a></li>
+                    <?php else: ?>
+                        <li class="nav-item"><a href="connexionPage" class="text-decoration-none text-dark">Connexion</a></li>
+                    <?php endif; ?>
                 </ul>
+
+
             </div>
         </div>
     </nav>
