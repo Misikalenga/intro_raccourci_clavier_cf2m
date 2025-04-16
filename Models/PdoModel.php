@@ -1,26 +1,27 @@
 <?php 
+// const DB_CONNECT_TYPE = "mysql";
+// const DB_CONNECT_HOST = "sqlgold.webmo.fr";
+// const DB_CONNECT_PORT = 48614;
+// const DB_CONNECT_NAME = "2025_web_agim";
+// const DB_CONNECT_CHARSET = "utf8";
+// const DB_CONNECT_USER = "2025_web_agim";
+// const DB_CONNECT_PWD = "iO0QB3gH7cw1";
 
-// Définition des constantes
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'raccourci_projet');
-define('DB_USER', 'root');
-define('DB_PASSWORD', '');
+const DB_CONNECT_TYPE = "mysql";
+const DB_CONNECT_HOST = "localhost";
+const DB_CONNECT_PORT = 3306;
+const DB_CONNECT_NAME = "raccourci_clavier_proj";
+const DB_CONNECT_CHARSET = "utf8";
+const DB_CONNECT_USER = "root";
+const DB_CONNECT_PWD = "";
 
-// Fonction centralisée pour gérer la connexion
-function setDB() {
-    static $pdo = null; // Garde la connexion persistante
-    if ($pdo === null) {
-        try {
-            $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4";
-            $options = [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                PDO::ATTR_EMULATE_PREPARES => false,
-            ];
-            $pdo = new PDO($dsn, DB_USER, DB_PASSWORD, $options);
-        } catch (PDOException $e) {
-            die("Erreur lors de la connexion : " . ($e->getMessage()));
-        }
-    }
-    return $pdo;
+const DSN = DB_CONNECT_TYPE . ":host=" . DB_CONNECT_HOST . ";port=" . DB_CONNECT_PORT . ";dbname=" . DB_CONNECT_NAME . ";charset=" . DB_CONNECT_CHARSET;
+
+try {
+    $pdo = new PDO(DSN, DB_CONNECT_USER, DB_CONNECT_PWD, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    ]);
+} catch (PDOException $e) {
+    die("Erreur lors de la connexion : " . ($e->getMessage()));
 }

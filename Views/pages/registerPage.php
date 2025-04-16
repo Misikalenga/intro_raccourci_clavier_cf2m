@@ -16,7 +16,7 @@
             </form>
 
             <!-- Bouton pour se connecter -->
-            <form action="connexion" method="post">
+            <form action="connexionPage" method="post">
                 <button type="submit" class="btn btn-secondary w-100">Se connecter</button>
             </form>
         </div>

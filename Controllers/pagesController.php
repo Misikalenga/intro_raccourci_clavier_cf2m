@@ -1,6 +1,6 @@
 <?php
-require_once 'Controllers/Utilities.php';
 require_once 'Models/CrudModel.php';
+require_once 'Utilities.php';
 function homePage()
 {
     $data_page = [
@@ -39,10 +39,10 @@ function inscriptionPage()
 }
 
 
-function introPage()
+function introPage($pdo)
 {
-    $shortcutWindows = getShortcutWindowsDB();
-    $shortcutVscode = getShortcutVscodeDB();
+    $shortcutWindows = getShortcutWindowsDB($pdo);
+    $shortcutVscode = getShortcutVscodeDB($pdo);
     $data_page = [
         'description' => 'Page d\'introduction',
         'title' => 'Introduction',
@@ -81,7 +81,7 @@ function vsCodePage(){
     $data_page = [
         'description' => 'Page de pratique',
         'title' => 'Pratique',
-        'view' => 'Views/pages/vsCodePage.php',
+        'view' => 'Views/pages/vscodePage.php',
         'layout' => 'Views/commons/layout.php',
     ];
 

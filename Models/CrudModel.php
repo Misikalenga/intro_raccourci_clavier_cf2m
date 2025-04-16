@@ -1,12 +1,12 @@
 <?php
 
-require_once 'Models/PdoModel.php'; // Connexion PDO commune
+require_once 'PdoModel.php';
 
 // requete pour inséré des utilisateur dans la base de données
-function registerNewUserDB($user, $password)
+function registerNewUserDB($pdo, $user, $password)
 {
     $req = ('INSERT INTO users (user, password) VALUES (:user, :password)');
-    $stmt = setDB()->prepare($req);
+    $stmt = $pdo->prepare($req);
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
     $stmt->bindParam(':user', $user, PDO::PARAM_STR);
     $stmt->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
@@ -14,24 +14,23 @@ function registerNewUserDB($user, $password)
     $stmt->closeCursor();
     return true;
 }
-function getShortcutWindowsDB()
+
+function getUser($pdo, $user)
 {
-    $req = 'SELECT id, shortcut, description FROM raccourcis';
-    $stmt = setDB()->prepare($req);
-    $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $stmt->closeCursor();
-    return $result;
+    $req = $pdo->prepare('SELECT user, password FROM users WHERE user = :user');
+    $req->bindValue(':user', $user, PDO::PARAM_STR);
+    $req->execute();
+    return $req->fetch(); 
+}
+function getShortcutWindowsDB($pdo)
+{
+    $req = $pdo->query('SELECT id, shortcut, description FROM raccourcis');
+    return $req->fetchAll();
 }
 
 
-function getShortcutVscodeDB()
+function getShortcutVscodeDB($pdo)
 {
-    $req = 'SELECT id, shortcut, description FROM raccourcis_vscode';
-    $stmt = setDB()->prepare($req);
-    $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $stmt->closeCursor();
-    return $result;
+    $req = $pdo->query('SELECT id, shortcut, description FROM raccourcis_vscode');
+    return $req->fetchAll();
 }
-

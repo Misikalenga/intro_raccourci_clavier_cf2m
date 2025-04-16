@@ -6,7 +6,12 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 d-flex align-items-center">
+
+
+                    <li class="nav-item self-end">
+                        <a class=" nav-link text-end active fs-5 p-0" href="home"><img class=" w-25" src="Public\img\cf2m-removebg-preview.png" alt=""></a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link active fs-5" aria-current="page" href="home">Accueil</a>
                     </li>
@@ -24,7 +29,11 @@
                 <!-- Connexion pour grands écrans -->
                 <ul class="navbar-nav ms-auto d-none d-lg-flex">
                     <li class="nav-item">
-                        <a class="nav-link active fs-5" href="connexion">Connexion</a>
+                        <?php if(empty($_SESSION)): ?>
+                        <a href="connexionPage" class="text-decoration-none ">Connexion</a>
+                        <?php else: ?>
+                        <a href="destroy" class="text-decoration-none ">Déconnexion</a>
+                        <?php endif; ?>
                     </li>
                 </ul>
             </div>

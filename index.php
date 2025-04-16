@@ -1,6 +1,8 @@
 <?php
+session_start(); // Démarre la session
+
 require_once 'Controllers/pagesController.php';
-// require_once 'Controllers/CrudController.php';
+require_once 'Controllers/CrudController.php';
 require_once 'Models/CrudModel.php';
 
 
@@ -13,30 +15,38 @@ if (empty($_GET['page'])) {
     $url = explode("/", filter_var($_GET['page'], FILTER_SANITIZE_URL));
 }
 
+
+
 switch ($url[0]) {
     case 'home':
         homePage();
+        showArray($_SESSION);
+
+        break;
+    case 'connexionPage':
+        connexionPage();
         break;
     case 'connexion':
-        connexionPage();
+        $data = getUser($pdo, $_POST['login']);
+
+        if ($data && $data['user'] === $_POST['login'] && password_verify($_POST['password'], $data['password'])) {
+            $_SESSION['statue'] = "connecté";
+            echo "ok";
+            header('Location:home');
+            exit();
+        } else {
+            $_SESSION['statue'] = "non connecté";
+            header('Location:connexionPage');
+        }
         break;
     case 'inscriptionPage':
         inscriptionPage();
         break;
     case 'inscription':
-        $user = htmlspecialchars($_POST['user']);
-        $password = htmlspecialchars($_POST['password']);
-        if (
-            empty($user) ||
-            empty($password)
-        ) {
-            throw new Exception("Tous les champs doivent etre remplis !");
-        }
-        createCurrentUser($user, $password);
+        createCurrentUser($pdo, $_POST['user'], $_POST['password']);
         break;
-
     case 'intro':
-        introPage();
+        introPage($pdo);
         break;
     case 'training':
         pratiquePage();
@@ -50,7 +60,13 @@ switch ($url[0]) {
     case 'outro':
         outroPage();
         break;
+    case 'destroy':
+        require_once('Views/pages/deconnexion.php');
+        connexionPage();
+        break;
     default:
         errorPage();
         break;
 }
+
+$pdo = null;

@@ -6,18 +6,18 @@
             <form action="connexion" method="post" class="mb-3">
                 <div class="mb-3">
                     <label for="login" class="form-label">Nom d'utilisateur</label>
-                    <input type="text" class="form-control form-control-lg" id="login" name="login" placeholder="Entrez votre identifiant">
+                    <input type="text" class="form-control" id="login" name="login" placeholder="Entrez votre identifiant">
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Mot de passe</label>
-                    <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Entrez votre mot de passe">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Entrez votre mot de passe">
                 </div>
-                <button type="submit" class="btn btn-primary btn-lg w-100">Se connecter</button>
+                <button type="submit" class="btn btn-primary w-100">Se connecter</button>
             </form>
 
             <!-- Formulaire d'inscription -->
             <form action="inscriptionPage" method="post">
-                <button type="submit" class="btn btn-secondary btn-lg w-100">S'inscrire</button>
+                <button type="submit" class="btn btn-secondary w-100">S'inscrire</button>
             </form>
         </div>
     </div>
