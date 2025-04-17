@@ -1,7 +1,7 @@
 <?php
 session_start(); // Démarre la session
 require_once 'Controllers/pagesController.php';
-require_once 'Controllers/CrudController.php';
+require_once 'Controllers/crudController.php';
 require_once 'Models/CrudModel.php';
 
 // showArray($_SESSION['user']);
@@ -34,7 +34,7 @@ switch ($url[0]) {
         } else {
             $_SESSION['user'] = "lambda";
             $_SESSION['statue'] = "non connecté";
-            $_SESSION['error_message'] = "Ce compte n'existe pas";
+            $_SESSION['error_message'] = "Nom d'utilisateur ou mot de passe incorrect !";
             header('Location: connexionPage');
             exit();
         }
@@ -53,8 +53,6 @@ switch ($url[0]) {
         } else {
             $_SESSION['success_message'] = "Vous avez créé votre compte !";
             createCurrentUser($pdo, $_POST['user'], $_POST['password']); // Enregistre l'utilisateur
-
-
             header('Location: connexionPage'); // Redirige vers la page de connexion au lieu de l'accueil
             exit();
         }
