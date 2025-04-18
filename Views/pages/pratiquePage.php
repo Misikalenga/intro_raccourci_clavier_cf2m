@@ -82,20 +82,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ajax'])) {
             <strong>⚠️ Attention :</strong> La triche ne sert à rien ! Prenez le temps de suivre les étapes avec sérieux. Les raccourcis clavier que vous apprendrez ici sont essentiels dans le développement web et vous feront gagner en efficacité. Jouez le jeu, car maîtriser ces outils est un véritable atout pour travailler rapidement et intelligemment.
         </aside>
     </div>
+ 
 
     <!-- Exercice 1 -->
     <div class="card shadow mb-4">
         <div class="card-body">
             <h4>Exercice 1.0 : Couper, Copier, Coller</h4>
             <ol class="mb-0">
-                <li>Entrez dans la zone de texte.</li>
-                <li>Sélectionnez le texte → <code>&lt;Je suis un texte&gt;</code> avec <kbd>Ctrl + A</kbd>.</li>
+                <li>Entrez dans la zone d'édition.</li>
+                <li>Sélectionnez le texte dans l'éditeur avec <kbd>Ctrl + A</kbd>.</li>
                 <li>Coupez le texte avec <kbd>Ctrl + X</kbd>.</li>
-                <li>Copiez cette ligne :
+                <li>Copiez cette ligne rouge :
                     <code>&lt;button class="btn btn-primary"&gt;Clique ici&lt;/button&gt;</code>
                     avec <kbd>Ctrl + C</kbd>.
                 </li>
-                <li>Collez-la ci-dessous avec <kbd>Ctrl + V</kbd>.</li>
+                <li>Collez-la dans la zone d'édition avec <kbd>Ctrl + V</kbd>.</li>
             </ol>
         </div>
     </div>
