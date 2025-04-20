@@ -22,12 +22,12 @@
         <div class="alert d-flex justify-content-center" style="margin: 1rem auto; text-align: center;">
 
             <aside class="text-center border rounded p-4 w-75" style="background-color: #cccccc; font-weight: bold; border-width: 1px; ">
-            <strong class="text-danger">Avertissement :</strong> Cette liste de raccourcis clavier est propre à mon usage personnel. Elle ne représente
-            qu'une petite partie des raccourcis disponibles dans le système Windows et l'IDE VS Code.<br> Il existe des centaines d'autres raccourcis
-            clavier qui n'ont pas été ajoutés ici, car ils ne sont pas nécessaires dans mon flux de travail quotidien.<br> Si vous
-            souhaitez explorer la totalité des raccourcis clavier de Windows, vous pouvez consulter les sites officiels :
-            <a href="https://fr.windows-office.net/?p=27067" target="_blank" class="link-primary text-decoration-none">Raccourcis clavier Windows</a>
-            & <a href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf" target="_blank" class="link-primary text-decoration-none">Raccourcis clavier Virtual Studio Code</a>.
+                <strong class="text-danger">Avertissement :</strong> Cette liste de raccourcis clavier est propre à mon usage personnel. Elle ne représente
+                qu'une petite partie des raccourcis disponibles dans le système Windows et l'IDE VS Code.<br> Il existe des centaines d'autres raccourcis
+                clavier qui n'ont pas été ajoutés ici, car ils ne sont pas nécessaires dans mon flux de travail quotidien.<br> Si vous
+                souhaitez explorer la totalité des raccourcis clavier de Windows, vous pouvez consulter les sites officiels :
+                <a href="https://fr.windows-office.net/?p=27067" target="_blank" class="link-primary text-decoration-none">Raccourcis clavier Windows</a>
+                & <a href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf" target="_blank" class="link-primary text-decoration-none">Raccourcis clavier Virtual Studio Code</a>.
             </aside>
         </div>
     </div>

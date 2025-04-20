@@ -76,7 +76,7 @@ EOD,
     ],
 
     6 => [
-        'titre' => 'Exercice 2.5',
+        'titre' => 'Exercice 2.4',
         'instructions' => [
             'Placez votre curseur au début de la ligne contenant <code>let utilisateur = "Jean";</code> et commentez la.',
             'Utilisez <kbd>Ctrl</kbd> + <kbd>D</kbd> pour sélectionner plusieurs occurences du mot <code>utilisateur</code> et remplacez-le par <code>client</code>',
@@ -99,151 +99,123 @@ EOD,
 ];
 
 ?>
-<!DOCTYPE html>
-<html lang="fr">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Exercices VSCode</title>
-    <script src="https://cdn.jsdelivr.net/npm/monaco-editor/min/vs/loader.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .editor {
-            height: 120px;
-            border: 1px solid #ccc;
-            margin-bottom: 20px;
-        }
+<style>
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow-y: hidden;
+        scroll-snap-type: y mandatory;
 
-        .message {
-            color: green;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-    </style>
-</head>
+    }
+</style>
+<!-- Écran d’introduction (titre + disclaimer) -->
+<div class="fullscreen-slide" id="intro-slide">
+    <div class="d-flex flex-column justify-content-center align-items-center p-4 text-center">
+        <h1 class="mb-4">Pratique sur Virtual Studio Code</h1>
+        <aside class="border rounded p-5 w-75" style="background-color: #cccccc; font-weight: bold;">
+            <strong>⚠️ Attention :</strong> La triche ne sert à rien ! Prenez le temps de suivre les étapes avec sérieux.
+            Les raccourcis clavier que vous apprendrez ici sont essentiels dans le développement web et vous feront gagner en
+            efficacité.
+            Jouez le jeu, car maîtriser ces outils est un véritable atout pour travailler rapidement et intelligemment.
+        </aside>
+        <div class="d-flex align-items-center gap-3 mt-4">
+            <button type="button" class="btn btn-primary btn-valider" id="startButton">Commencer l'exercice 1</button>
+        </div>
+    </div>
+</div>
 
-<body>
-    <div class="container py-5">
-        <h1 class="text-center mb-5">Pratique sur Virtual Studio Code</h1>
+<?php foreach ($exercices as $id => $exo): ?>
 
-        <?php foreach ($exercices as $id => $exo): ?>
-            <div class="card shadow mb-4">
-                <div class="card-body">
-                    <h4><?= $exo['titre'] ?></h4>
+    <div class="fullscreen-slide" id="exercise<?= $id ?>">
+        <div class="card shadow p-4 mb-5">
+            <h4 class="text-center"><?= $exo['titre'] ?></h4>
+            <div class="card-body">
+                <div class="card-body shadow border border-dark rounded">
                     <ol class="mb-0">
                         <?php foreach ($exo['instructions'] as $instruction): ?>
                             <li><?= $instruction ?></li>
                         <?php endforeach; ?>
                     </ol>
                 </div>
-            </div>
 
-            <div class="mb-3 zone_edition">
-                <div id="editor<?= $id ?>" class="editor"></div>
-                <div class="d-flex align-items-center mt-2">
-                    <button onclick="validateEditor(<?= $id ?>)" type="button" class="btn btn-primary me-2">Valider</button>
-                    <p id="message<?= $id ?>" class="message mb-0"></p>
-                </div>
-            </div>
-
-            <?php if ($id === array_key_last($exercices)): ?>
-                <div class="container mt-3">
-                    <!-- Chronomètre avec Bootstrap -->
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <p class="fw-bold fs-5 m-0">⏱ Temps :</p>
-                        </div>
-                        <div class="col-auto">
-                            <p id="timer" class="fs-5 m-0">00:00:000</p>
-                        </div>
-                        <div class="col-auto">
-                            <button id="startStopButton" class="btn btn-primary me-2">Démarrer</button>
-                            <button id="resetButton" class="btn btn-secondary">Réinitialiser</button>
-                        </div>
+                <div class="zone_edition mt-4">
+                    <h5>🧪 Zone d'édition</h5>
+                    <div id="editor<?= $id ?>" class="editor"></div>
+                    <div class="d-flex align-items-center mt-2">
+                        <button onclick="validateEditor(<?= $id ?>)" type="button" class="btn btn-primary me-2">Valider</button>
+                        <p id="message<?= $id ?>" class="message mb-0"></p>
                     </div>
                 </div>
-            <?php endif; ?>
-
-            <hr style="height: 5px; background-color: black; margin: 3rem 0;">
-        <?php endforeach; ?>
-
-
-        <div class="my-4 text-center">
-
-            <button type="button" class="btn btn-primary" onclick="window.location.href='navigation'">
-                <i class="fa fa-chevron-left" aria-hidden="true"></i>
-            </button>
-            <button type="button" class="btn btn-primary" onclick="window.location.href='outro'">
-                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-            </button>
+            </div>
         </div>
-    </div>
-    <script>
-        let timerInterval = null;
-        let milliseconds = 0;
-        let isRunning = false;
 
-        // Fonction pour formater le temps (MM:SS:ms)
-        function formatTime(ms) {
-            const minutes = Math.floor(ms / 60000).toString().padStart(2, '0');
-            const seconds = Math.floor((ms % 60000) / 1000).toString().padStart(2, '0');
-            const milli = (ms % 1000).toString().padStart(3, '0');
-            return `${minutes}:${seconds}:${milli}`;
-        }
+        <!-- Code PHP pour la vérification du dernier exercice -->
+        <div class="d-flex justify-content-center gap-3 mt-5">
 
-        // Mettre à jour l'affichage du chronomètre
-        function updateTimer() {
-            document.getElementById('timer').textContent = formatTime(milliseconds);
-        }
-
-        // Démarrer ou arrêter le chronomètre
-        document.getElementById('startStopButton').addEventListener('click', function() {
-            if (isRunning) {
-                // Arrêter le chronomètre
-                clearInterval(timerInterval);
-                timerInterval = null;
-                isRunning = false;
-                this.textContent = 'Démarrer'; // Changer le texte du bouton
+            <?php
+            // Vérifier si c'est l'exercice 6
+            if ($id == 6) {
+                echo '<button type="button" class="btn btn-secondary btn-valider text-center" id="nextButton' . $id . '" disabled onclick="window.location.href=\'outro\'">Terminer l\'exercice</button>';
             } else {
-                // Démarrer le chronomètre
-                const startTime = Date.now() - milliseconds; // Ajuster le démarrage
-                timerInterval = setInterval(() => {
-                    milliseconds = Date.now() - startTime;
-                    updateTimer();
-                }, 10); // Mise à jour toutes les 10 ms
-                isRunning = true;
-                this.textContent = 'Arrêter'; // Changer le texte du bouton
+                echo '<button type="button" class="btn btn-secondary btn-valider text-center" id="nextButton' . $id . '" data-scroll-target="#exercise' . ($id + 1) . '" disabled onclick="scrollToNextExercise(' . ($id + 1) . ')">Commencer l\'exercice ' . ($id + 1) . '</button>';
+            }
+            ?>
+
+        </div>
+
+    </div>
+
+<?php endforeach; ?>
+
+<!-- Chrono -->
+<div class="chrono shadow border border-1 border-dark">
+    <p id="time" class="fs-4">00:00:000</p>
+    <button id="startPause" class="btn btn-primary" onclick="startPauseChrono()">
+        <i class="fas fa-play"></i>
+    </button>
+    <button id="reset" class="btn btn-danger" onclick="resetChrono()">
+        <i class="fas fa-sync"></i>
+    </button>
+</div>
+
+
+<script>
+    let editors = {};
+    let editorStates = {}; // Pour suivre l'état des modifications après validation
+
+    require.config({
+        paths: {
+            'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs'
+        }
+    });
+
+    const editorConfigs = {
+        <?php foreach ($exercices as $id => $exo): ?> "editor<?= $id ?>": {
+                value: `<?= addslashes($exo['code']) ?>`,
+                language: "<?= $exo['langage'] ?>"
+            }
+            <?= ($id !== array_key_last($exercices) ? ',' : '') ?>
+        <?php endforeach; ?>
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const startButton = document.getElementById('startButton');
+
+        startButton.addEventListener('click', function() {
+            // Faire défiler la page vers l'exercice 1
+            const exercise1 = document.getElementById('exercise1');
+            if (exercise1) {
+                exercise1.scrollIntoView({
+                    behavior: 'smooth'
+                });
             }
         });
-
-        // Réinitialiser le chronomètre
-        document.getElementById('resetButton').addEventListener('click', function() {
-            clearInterval(timerInterval);
-            timerInterval = null;
-            milliseconds = 0;
-            isRunning = false;
-            updateTimer();
-            document.getElementById('startStopButton').textContent = 'Démarrer'; // Remettre le texte du bouton
-        });
-    </script>
-    <script>
-        let editors = {};
-        require.config({
-            paths: {
-                'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs'
-            }
-        });
-
-        const editorConfigs = {
-            <?php foreach ($exercices as $id => $exo): ?> "editor<?= $id ?>": {
-                    value: `<?= addslashes($exo['code']) ?>`,
-                    language: "<?= $exo['langage'] ?>"
-                },
-            <?php endforeach; ?>
-        };
 
         require(['vs/editor/editor.main'], function() {
+            // Initialise tous les éditeurs
             for (const [id, config] of Object.entries(editorConfigs)) {
                 editors[id] = monaco.editor.create(document.getElementById(id), {
                     value: config.value,
@@ -251,8 +223,22 @@ EOD,
                     theme: 'vs-dark',
                     fontSize: 14
                 });
-            }
 
+                // Initialisation de l'état des éditeurs
+                editorStates[id] = {
+                    isValid: false, // Si l'exercice a été validé
+                    originalContent: editors[id].getValue() // Contenu original pour vérifier les modifications
+                };
+
+                // Écouter les modifications dans l'éditeur
+                editors[id].onDidChangeModelContent(function() {
+                    if (editorStates[id].isValid) {
+                        editorStates[id].isValid = false; // Invalider si l'utilisateur modifie le contenu
+                        document.getElementById("message" + id).textContent = ''; // Réinitialiser le message
+                        resetNextButton(id); // Réinitialiser le bouton
+                    }
+                });
+            }
             window.validateEditor = function(id) {
                 const editorId = "editor" + id;
                 const content = editors[editorId].getValue();
@@ -261,11 +247,11 @@ EOD,
 
                 let isValid = false;
 
+                // Logique de validation spécifique à chaque exercice
                 switch (id) {
-                    case 1: // Exercice 1.9
+                    case 1:
                         isValid = lines.length === 4 && lines.every(l => l === 'Bonjour, Je suis un texte à dupliquer');
                         break;
-
                     case 2:
                         isValid = (
                             lines.length === 5 &&
@@ -276,7 +262,6 @@ EOD,
                             lines[4] === 'let x = 42;'
                         );
                         break;
-
                     case 3:
                         isValid = (
                             lines.length === 4 &&
@@ -286,8 +271,6 @@ EOD,
                             lines[3] === "alert('Mon grand facile')"
                         );
                         break;
-
-
                     case 4:
                         isValid = (
                             lines.length === 2 &&
@@ -295,25 +278,17 @@ EOD,
                             lines[1] === 'Jean'
                         );
                         break;
-
-
                     case 5:
-                        // Vérifie que la première ligne a été commentée puis décommentée
-                        const line1 = lines[0].trim(); // "let utilisateur = \"Jean\";"
+                        const line1 = lines[0].trim();
+                        const line2 = lines[1].trim();
+                        const line3 = lines[2].trim();
 
-                        // Vérifie les lignes commentées après avoir utilisé Alt + Click
-                        const line2 = lines[1].trim(); // "// console.log(utilisateur);"
-                        const line3 = lines[2].trim(); // "// const nom = \"x\";"
-
-                        // Vérifie que les lignes sont dans l'ordre correct
                         isValid = (
                             line1 === 'let utilisateur = "Jean";' &&
                             line2 === '// console.log(utilisateur);' &&
                             line3 === '// const nom = "x";'
                         );
                         break;
-
-
                     case 6:
                         isValid = lines.join('\n') === [
                             'let client = "Jean";',
@@ -324,16 +299,41 @@ EOD,
                             'let x = 42;'
                         ].join('\n');
                         break;
-
-
                     default:
                         alert("Validation non définie pour l'exercice " + id);
                         return;
                 }
 
+                // Mettre à jour le message de validation
                 message.textContent = isValid ? 'Bonne réponse ✅' : 'Valeur incorrecte ❌';
                 message.style.color = isValid ? 'green' : 'red';
-            }
 
+                // Mettre à jour l'état du bouton en fonction de la validité
+                const nextButton = document.getElementById("nextButton" + id);
+                if (isValid) {
+                    // Activer le bouton suivant et lui donner une classe de succès
+                    nextButton.disabled = false;
+                    nextButton.classList.remove("btn-secondary"); // Retirer le gris
+                    nextButton.classList.add("btn-success"); // Ajouter le vert
+
+                } else {
+                    // Désactiver le bouton suivant et le mettre en gris
+                    nextButton.disabled = true;
+                    nextButton.classList.remove("btn-success"); // Retirer le vert
+                    nextButton.classList.add("btn-secondary"); // Ajouter le gris
+                }
+
+            };
+            window.scrollToNextExercise = function(exerciseId) {
+                const nextSlide = document.getElementById('exercise' + exerciseId);
+                if (nextSlide) {
+                    nextSlide.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            };
         });
-    </script>
+    });
+</script>
+<script src="<?= ROOT ?>/Public/js/chrono.js"></script>
+<script src="<?= ROOT ?>/Public/js/keyDisabled.js"></script>

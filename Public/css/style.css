@@ -77,4 +77,74 @@ tr > th:nth-of-type(1) {
   /* Retour à la position initiale */
 }
 
+.editor {
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+    width: 100%;
+    height: 150px;
 
+
+}
+
+.message {
+  color: green;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.fullscreen-slide {
+  height: 100vh;
+  width: 70vw;
+  scroll-snap-align: start;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.chrono {
+  position: fixed;
+  left: 1%;
+  top: 2%;
+  width: 11%;
+  padding: .6rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.chrono p {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.chrono button {
+  font-size: .5rem;
+  padding: .5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .chrono {
+    width: 95%;
+    gap: 10px;
+  }
+
+  .chrono p {
+    font-size: 1.2rem;
+  }
+
+  .chrono button {
+    font-size: 0.8rem;
+    padding: .4rem;
+  }
+}
