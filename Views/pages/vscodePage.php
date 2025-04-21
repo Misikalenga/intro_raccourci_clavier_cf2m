@@ -1,4 +1,5 @@
 <?php
+
 $exercices = [
     1 => [
         'titre' => 'Exercice 1.9',
@@ -142,7 +143,7 @@ EOD,
                 </div>
 
                 <div class="zone_edition mt-4">
-                    <h5>🧪 Zone d'édition</h5>
+                    <h5>Zone d'édition</h5>
                     <div id="editor<?= $id ?>" class="editor"></div>
                     <div class="d-flex align-items-center mt-2">
                         <button onclick="validateEditor(<?= $id ?>)" type="button" class="btn btn-primary me-2">Valider</button>
@@ -171,26 +172,23 @@ EOD,
 <?php endforeach; ?>
 
 <!-- Chrono -->
-<div class="chrono shadow border border-1 border-dark">
-    <p id="time" class="fs-4">00:00:000</p>
-    <button id="startPause" class="btn btn-primary" onclick="startPauseChrono()">
+<div class="chrono shadow border border-1 border-dark d-flex align-items-center justify-content-center gap-2 position-fixed top-0 start-50 translate-middle-x p-2 w-auto w-sm-25 w-md-20 w-lg-15">
+    <p id="time" class="chrono-time mb-0">00:00:000</p>
+    <button id="startPause" class="btn btn-primary p-2 chrono-btn" onclick="startPauseChrono()">
         <i class="fas fa-play"></i>
     </button>
-    <button id="reset" class="btn btn-danger" onclick="resetChrono()">
+    <button id="reset" class="btn btn-danger p-2 chrono-btn" onclick="resetChrono()">
         <i class="fas fa-sync"></i>
     </button>
 </div>
 
 
+<!-- Charger loader.js d'abord -->
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor/min/vs/loader.js"></script>
+
 <script>
     let editors = {};
-    let editorStates = {}; // Pour suivre l'état des modifications après validation
-
-    require.config({
-        paths: {
-            'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs'
-        }
-    });
+    let editorStates = {};
 
     const editorConfigs = {
         <?php foreach ($exercices as $id => $exo): ?> "editor<?= $id ?>": {
@@ -199,13 +197,13 @@ EOD,
             }
             <?= ($id !== array_key_last($exercices) ? ',' : '') ?>
         <?php endforeach; ?>
-    };
+    }
 
     document.addEventListener('DOMContentLoaded', function() {
         const startButton = document.getElementById('startButton');
 
+        // Scroll vers exercice 1
         startButton.addEventListener('click', function() {
-            // Faire défiler la page vers l'exercice 1
             const exercise1 = document.getElementById('exercise1');
             if (exercise1) {
                 exercise1.scrollIntoView({
@@ -214,8 +212,15 @@ EOD,
             }
         });
 
+        // Charger Monaco après que loader.js est prêt
+        require.config({
+            paths: {
+                'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs'
+            }
+        });
+
         require(['vs/editor/editor.main'], function() {
-            // Initialise tous les éditeurs
+            // Initialiser les éditeurs
             for (const [id, config] of Object.entries(editorConfigs)) {
                 editors[id] = monaco.editor.create(document.getElementById(id), {
                     value: config.value,
@@ -224,21 +229,21 @@ EOD,
                     fontSize: 14
                 });
 
-                // Initialisation de l'état des éditeurs
                 editorStates[id] = {
-                    isValid: false, // Si l'exercice a été validé
-                    originalContent: editors[id].getValue() // Contenu original pour vérifier les modifications
+                    isValid: false,
+                    originalContent: editors[id].getValue()
                 };
 
-                // Écouter les modifications dans l'éditeur
                 editors[id].onDidChangeModelContent(function() {
                     if (editorStates[id].isValid) {
-                        editorStates[id].isValid = false; // Invalider si l'utilisateur modifie le contenu
-                        document.getElementById("message" + id).textContent = ''; // Réinitialiser le message
-                        resetNextButton(id); // Réinitialiser le bouton
+                        editorStates[id].isValid = false;
+                        document.getElementById("message" + id).textContent = '';
+                        resetNextButton(id);
                     }
                 });
             }
+
+            // Fonction globale de validation
             window.validateEditor = function(id) {
                 const editorId = "editor" + id;
                 const content = editors[editorId].getValue();
@@ -247,7 +252,6 @@ EOD,
 
                 let isValid = false;
 
-                // Logique de validation spécifique à chaque exercice
                 switch (id) {
                     case 1:
                         isValid = lines.length === 4 && lines.every(l => l === 'Bonjour, Je suis un texte à dupliquer');
@@ -279,14 +283,10 @@ EOD,
                         );
                         break;
                     case 5:
-                        const line1 = lines[0].trim();
-                        const line2 = lines[1].trim();
-                        const line3 = lines[2].trim();
-
                         isValid = (
-                            line1 === 'let utilisateur = "Jean";' &&
-                            line2 === '// console.log(utilisateur);' &&
-                            line3 === '// const nom = "x";'
+                            lines[0] === 'let utilisateur = "Jean";' &&
+                            lines[1] === '// console.log(utilisateur);' &&
+                            lines[2] === '// const nom = "x";'
                         );
                         break;
                     case 6:
@@ -304,26 +304,22 @@ EOD,
                         return;
                 }
 
-                // Mettre à jour le message de validation
                 message.textContent = isValid ? 'Bonne réponse ✅' : 'Valeur incorrecte ❌';
                 message.style.color = isValid ? 'green' : 'red';
 
-                // Mettre à jour l'état du bouton en fonction de la validité
                 const nextButton = document.getElementById("nextButton" + id);
                 if (isValid) {
-                    // Activer le bouton suivant et lui donner une classe de succès
                     nextButton.disabled = false;
-                    nextButton.classList.remove("btn-secondary"); // Retirer le gris
-                    nextButton.classList.add("btn-success"); // Ajouter le vert
-
+                    nextButton.classList.remove("btn-secondary");
+                    nextButton.classList.add("btn-success");
                 } else {
-                    // Désactiver le bouton suivant et le mettre en gris
                     nextButton.disabled = true;
-                    nextButton.classList.remove("btn-success"); // Retirer le vert
-                    nextButton.classList.add("btn-secondary"); // Ajouter le gris
+                    nextButton.classList.remove("btn-success");
+                    nextButton.classList.add("btn-secondary");
                 }
-
             };
+
+            // Scroll vers l'exercice suivant
             window.scrollToNextExercise = function(exerciseId) {
                 const nextSlide = document.getElementById('exercise' + exerciseId);
                 if (nextSlide) {
@@ -332,8 +328,21 @@ EOD,
                     });
                 }
             };
+
+            // Fonction de reset des boutons (à ajouter si elle existe pas)
+            window.resetNextButton = function(id) {
+                const btn = document.getElementById("nextButton" + id);
+                if (btn) {
+                    btn.disabled = true;
+                    btn.classList.remove("btn-success");
+                    btn.classList.add("btn-secondary");
+                }
+            };
         });
     });
 </script>
+
 <script src="<?= ROOT ?>/Public/js/chrono.js"></script>
 <script src="<?= ROOT ?>/Public/js/keyDisabled.js"></script>
+
+<?php

@@ -87,16 +87,6 @@ $exercises = [
     </div>
 </div>
 
-<!-- Chrono -->
-<div class="chrono shadow border border-1 border-dark">
-    <p id="time" class="fs-4">00:00:000</p>
-    <button id="startPause" class="btn btn-primary" onclick="startPauseChrono()">
-        <i class="fas fa-play"></i>
-    </button>
-    <button id="reset" class="btn btn-danger" onclick="resetChrono()">
-        <i class="fas fa-sync"></i>
-    </button>
-</div>
 
 
 <?php

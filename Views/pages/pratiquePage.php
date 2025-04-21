@@ -10,13 +10,14 @@ $valeursAttendues = [
 $exercices = [
   [
     'id' => 'exercise1',
-    'title' => 'Exercice 1.0 : Couper, Copier, Coller',
+    'title' => 'EXERCICE 1.0',
     'instructions' => [
-      'Entrez dans la zone d\'édition.',
+      'Entrez dans la <label class="rounded" style="color:rgb(2, 185, 2); text-decoration:underline;">Zone de texte</label>',
       'Sélectionnez le texte dans l\'éditeur avec <kbd>Ctrl + A</kbd>.',
       'Coupez le texte avec <kbd>Ctrl + X</kbd>.',
       'Copiez cette ligne rouge : <code>&lt;button class="btn btn-primary"&gt;Clique ici&lt;/button&gt;</code> avec <kbd>Ctrl + C</kbd>.',
-      'Collez-la dans la zone d\'édition avec <kbd>Ctrl + V</kbd>.'
+      'Collez-la dans la zone d\'édition avec <kbd>Ctrl + V</kbd>.',
+      'N\'oubliez pas de cliquez sur <button class="btn btn-primary p-1" style="cursor:default;">Valider</button> pour passez à l\'éxercice suivant.'
     ],
     'textarea' => 'Je suis un texte',
     'button_text' => 'Commencer l\'exercice 2',
@@ -24,7 +25,7 @@ $exercices = [
   ],
   [
     'id' => 'exercise2',
-    'title' => 'Exercice 1.1 : Annuler et Rétablir',
+    'title' => 'EXERCICE 1.1',
     'instructions' => [
       'Sélectionnez et supprimez le mot : <code>text</code> avec <kbd>BACKSPACE</kbd>.',
       'Utilisez <kbd>Ctrl + Z</kbd> pour <strong>annuler</strong> la suppression.',
@@ -36,7 +37,7 @@ $exercices = [
   ],
   [
     'id' => 'exercise3',
-    'title' => 'Exercice 1.2 : Naviguer et Sélectionner',
+    'title' => 'EXERCICE 1.2',
     'instructions' => [
       'Entrez dans la zone de texte.',
       'Utilisez <kbd>Ctrl + →</kbd> ou <kbd>←</kbd> pour déplacer le curseur d\'un mot à l\'autre.',
@@ -49,7 +50,7 @@ $exercices = [
   ],
   [
     'id' => 'exercise4',
-    'title' => 'Exercice 1.3 : Supprimer et Sélectionner',
+    'title' => 'EXERCICE 1.3',
     'instructions' => [
       'Entrez dans la zone de texte.',
       'Supprimez tout sauf le mot "Lorem".'
@@ -60,7 +61,7 @@ $exercices = [
   ],
   [
     'id' => 'exercise5',
-    'title' => 'Exercice 1.4 : Nettoyer le Texte',
+    'title' => 'EXERCICE 1.4',
     'instructions' => [
       'Nettoyez la zone de texte pour qu\'elle contienne : <code>Félicitations, tu as réussi !</code>'
     ],
@@ -81,6 +82,11 @@ $exercices = [
     overflow-y: hidden;
     scroll-snap-type: y mandatory;
   }
+
+  h4 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+  }
 </style>
 
 <!-- Écran d’introduction -->
@@ -89,13 +95,9 @@ $exercices = [
     <h1 class="mb-4">Pratique sur zone de texte</h1>
     <aside class="border rounded p-4 w-75 mb-3" style="background-color: #cccccc; font-weight: bold;">
       <strong>⚠️ Attention :</strong> La triche ne sert à rien ! Prenez le temps de suivre les étapes avec sérieux.
-      Les raccourcis clavier que vous apprendrez ici sont essentiels dans le développement web. Il vous permet de gagnez un temp précieux. <br>
-      Voici un exemple pour vous aidez a faire l'exercice. Appuyez sur Commencer l'exercice 1 quand vous serez prêt.
+      Les raccourcis clavier que vous apprendrez ici sont essentiels dans le développement web. Il vous permet de gagnez un temp précieux.
     </aside>
-    <div class="mt-2">
 
-      <img src="<?= ROOT ?>/Public/img/exempleExo.png " alt="">
-    </div>
     <div class="d-flex align-items-center gap-3 mt-4">
       <button type="button" class="btn btn-primary btn-valider" data-scroll-target="#exercise1">Commencer l'exercice 1</button>
     </div>
@@ -118,7 +120,7 @@ foreach ($exercices as $exercice) {
   echo '</ol>
         </div>
         <div class="zone_edition mt-4">
-          <label for="' . $editorId . '" class="form-label">🧪 Zone d\'édition</label>
+          <label for="' . $editorId . '" class="form-label rounded fw-bold" style="color:rgb(2, 185, 2); text-decoration:underline;">Zone de texte </label>
           <textarea class="form-control shadow border border-dark editor h-50 mb-3" name="' . $editorId . '" id="' . $editorId . '">' . $exercice['textarea'] . '</textarea>
           <div class="d-flex align-items-center gap-3">
             <button type="button" class="btn btn-primary btn-valider" data-editor="' . $editorId . '">Valider</button>
@@ -128,21 +130,21 @@ foreach ($exercices as $exercice) {
       </div>
     </div>
     <div class="d-flex justify-content-center gap-3 mt-5">
-      <button type="button" class="btn btn-secondary btn-next text-center" data-scroll-target="' . $exercice['next_exercise'] . '" disabled>' . $exercice['button_text'] . '</button>
+      <button type="button" class="btn btn-darkmode btn-secondary btn-next text-center" data-scroll-target="' . $exercice['next_exercise'] . '" disabled>' . $exercice['button_text'] . '</button>
     </div>
   </div>';
 }
 ?>
 
 <!-- Chrono -->
-<div class="chrono shadow border border-1 border-dark">
-  <p id="time" class="fs-4">00:00:000</p>
-  <button id="startPause" class="btn btn-primary" onclick="startPauseChrono()">
-    <i class="fas fa-play"></i>
-  </button>
-  <button id="reset" class="btn btn-danger" onclick="resetChrono()">
-    <i class="fas fa-sync"></i>
-  </button>
+<div class="chrono shadow border border-1 border-dark d-flex align-items-center justify-content-center gap-2 position-fixed top-0 start-50 translate-middle-x p-2 w-auto w-sm-25 w-md-20 w-lg-15">
+    <p id="time" class="chrono-time mb-0">00:00:000</p>
+    <button id="startPause" class="btn btn-primary p-2 chrono-btn" onclick="startPauseChrono()">
+        <i class="fas fa-play"></i>
+    </button>
+    <button id="reset" class="btn btn-danger p-2 chrono-btn" onclick="resetChrono()">
+        <i class="fas fa-sync"></i>
+    </button>
 </div>
 
 <!-- Script JS -->

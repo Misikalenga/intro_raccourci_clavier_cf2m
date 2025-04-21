@@ -20,6 +20,8 @@
                     <li class="nav-item">
                         <a class="nav-link active fs-5" href="training">Pratique</a>
                     </li>
+
+
                 </ul>
                 <!-- Connexion -->
                 <ul class="navbar-nav d-flex align-items-start">
@@ -28,6 +30,7 @@
                     <?php else: ?>
                         <li class="nav-item"><a href="connexionPage" class="text-decoration-none text-dark">Connexion</a></li>
                     <?php endif; ?>
+
                 </ul>
             </div>
         </div>

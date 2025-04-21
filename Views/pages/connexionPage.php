@@ -1,7 +1,7 @@
 <div class="container mt-5">
     <!-- Card avec comportement responsive -->
     <div class="card mx-auto shadow fs-5 connexion col-12 col-lg-4">
-        <div class="card-body">
+        <div class="card-body card-form">
             <h5 class="card-title text-center mb-4 fs-3 text-shadow">Connexion</h5>
             <!-- Formulaire de connexion -->
             <form action="connexion" method="post" class="mb-3">

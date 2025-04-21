@@ -9,7 +9,7 @@
         Que ce soit pour naviguer rapidement entre les fichiers, effectuer des
         actions comme couper, copier, coller, ou gérer les fenêtres et les bureaux
         virtuels, les raccourcis clavier vous permettent d'être plus efficaces et de
-        vous concentrer sur l'essentiel : <span class="text-danger">CODER</span>.
+        vous concentrer sur l'essentiel <span class="text-danger">CODER</span>
     </p>
     <p class="text-center">
         En intégrant ces raccourcis dans votre quotidien, vous pourrez améliorer
