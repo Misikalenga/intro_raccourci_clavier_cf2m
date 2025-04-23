@@ -67,3 +67,12 @@ if ($_SESSION["user_role"] !== "ROLE_ADMIN") {
 ```php
 $_SESSION["user_role"] = $req["user_roles"];
 ```
+
+## Controllers
+
+- Ton `Utilities.php` est génial. Tu vas adorer Twig !
+- Même chose pour ton `pagesController.php`.
+- Comme déjà dit, ton `crudController` va grandir. Ce serait un plaisir de le voir évoluer 🙂
+
+
+En tout cas, bravo pour ton travail. J'espère que mes petites remarques t'aident un peu
