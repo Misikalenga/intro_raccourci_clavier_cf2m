@@ -19,11 +19,14 @@ if (empty($_GET['page'])) {
 switch ($url[0]) {
     case 'home':
         homePage();
+
         break;
     case 'connexionPage':
+
         connexionPage();
         break;
     case 'connexion':
+
         $data = getUser($pdo, $_POST['login']);
 
         if ($data && $data['user'] === $_POST['login'] && password_verify($_POST['password'], $data['password'])) {
