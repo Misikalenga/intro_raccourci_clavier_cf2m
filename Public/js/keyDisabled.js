@@ -1,6 +1,6 @@
 // Empêcher le scroll clavier
 let scrollLocked = true;
-const scrollKeys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', 'Tab', ' '];
+const scrollKeys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', 'Tab'];
 
 document.addEventListener('keydown', e => {
     if (scrollLocked && scrollKeys.includes(e.key)) {

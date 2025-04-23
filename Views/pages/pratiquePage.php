@@ -27,7 +27,7 @@ $exercices = [
     'id' => 'exercise2',
     'title' => 'EXERCICE 1.1',
     'instructions' => [
-      'Sélectionnez et supprimez le mot : <code>text</code> avec <kbd>BACKSPACE</kbd>.',
+      'Sélectionnez et supprimez le mot : <code>texte</code> avec <kbd>BACKSPACE</kbd>.',
       'Utilisez <kbd>Ctrl + Z</kbd> pour <strong>annuler</strong> la suppression.',
       'Utilisez <kbd>Ctrl + Y</kbd> pour <strong>rétablir</strong> la suppression.'
     ],

@@ -60,8 +60,7 @@ $exercises = [
         'steps' => [
             '<kbd>F11</kbd> : Passez en mode plein écran dans un navigateur ou une application. Appuyez à nouveau sur <kbd>F11</kbd> pour revenir à l\'écran normal.',
             '<kbd>Ctrl + Scroll Souris</kbd> : Zoomer ou dézoomer sur une page.',
-            '<kbd>Win + Shift + S</kbd> : Capturez une partie spécifique de votre écran. Dessinez une forme carrée ou rectangulaire à un endroit de la page. L\'image sera envoyée dans le presse-papiers ; testez-la en la collant quelque part avec <kbd>Ctrl + V</kbd>.',
-            '<kbd>Win + V</kbd> : Accédez au presse-papiers pour récupérer des éléments copiés précédemment.',
+            '<kbd>Win + Shift + S</kbd> : Capturez une partie spécifique de votre écran. Dessinez une forme carrée ou rectangulaire à un endroit de la page. L\'image sera envoyée dans le presse-papiers ; testez-la en la collant quelque part avec <kbd>Win + V</kbd>.',
             '<kbd>F5</kbd> : Rafraîchir une page ou une fenêtre.',
             '<kbd>Ctrl + F5</kbd> : Rafraîchir une page en contournant le cache.'
         ]
