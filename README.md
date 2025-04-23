@@ -58,3 +58,9 @@ minute trop grand (non responsiv)
 mise en avant du chrono -> si on appuye sur le start du chrono, tu peu commencer les exercice
 la possibilité de creer des espace ne fonctionne plus -> pratiquePage -> all -> editors (ctrl tab non intuitif)
 ajouter ctrl + 0 pour reinitialisé le zoom
+
+
+
+
+### idée
+ajout espace commentaire pour retour utilisateur
