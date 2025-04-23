@@ -27,3 +27,43 @@
 const time = document.getElementById('time');
 ```
 - Comme ça, le DOM n’est interrogé qu’une seule fois. C’est beaucoup plus efficace.
+
+## Models
+
+- Dans ton `PdoModel.php`, tu as redéclaré les constantes de connexion à ta base de données.
+- Déjà, ce n’est pas idéal d’avoir ce type d’informations visibles dans le code.
+- Deuxièmement, puisqu’elles sont déjà présentes dans ton `config.php`, ajoute un `require_once` dans ton `index.php`, et elles seront disponibles globalement.
+- Si tu préfères, tu peux aussi ajouter le `require_once("config.php")` dans ton `CrudModel` (avant le `require` de `PdoModel`).
+- Peut-être que vous n’avez pas encore vu les déclarations de type dans le cours, mais cette fonction (et d’autres similaires) :
+
+```php
+function registerNewUserDB($pdo, $user, $password)
+```
+
+- serait mieux écrite ainsi :
+
+```php
+function registerNewUserDB(PDO $pdo, string $user, string $password): bool
+```
+
+- Le code sera plus clair et plus sûr avec ces déclarations. Cela empêche aussi, par exemple, l’utilisation d’un entier là où une chaîne est attendue.
+- À part cela, ton utilisation de `prepare` et `query` est parfaite (tu utilises bien `query` uniquement sans saisie utilisateur).
+- Petite bête noire concernant les fonctions `getShortcut...` : elles mériteraient leur propre `Model`, car elles n’ont rien à faire dans le `CRUD` 🙂
+- De plus, je ne vois pas de fonctions pour ajouter des raccourcis ou modifier ceux déjà présents dans la base.
+- Personnellement, je me crée toujours une interface pour pouvoir ajouter ou modifier des éléments sans devoir passer par phpMyAdmin.
+- Tu as des fonctions pour créer un utilisateur, mais pas encore pour la connexion (j’imagine que c’est en cours).
+- Crée un `Models/AdminModel` et fais-toi une interface d’administration (n’oublie pas de t’assurer que personne d’autre n’y a accès) :
+
+```php
+if ($_SESSION["user_role"] !== "ROLE_ADMIN") {
+    header("Location: ?route=home");
+    die();
+}
+```
+
+- Ajoute un champ `roles` dans ta table `Users`, contenant des valeurs comme `['ROLE_ADMIN']` ou `['ROLE_USER']`.
+- Et lors de la connexion d’un utilisateur :
+
+```php
+$_SESSION["user_role"] = $req["user_roles"];
+```
