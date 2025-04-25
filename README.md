@@ -48,7 +48,7 @@ minute trop grand (non responsiv)
 ## SCRUM
 # cycle 1 prio absolu
 
-<!-- 1. Pendant la pratique, si on rafraîchit la page, on revient à l'introduction des questions. Utilise `localStorage` (JS) ou `$_SESSION` (PHP) pour garder la page sur la question en cours. --> ✅
+1. Pendant la pratique, si on rafraîchit la page, on revient à l'introduction des questions. Utilise `localStorage` (JS) ou `$_SESSION` (PHP) pour garder la page sur la question en cours. ✅
 
 2. Ton `index.php` contient ton switch de routage. Crée un fichier `Controllers/RouteController.php` et déplace tout ce code dedans.
 
@@ -56,7 +56,7 @@ minute trop grand (non responsiv)
 
 4. ajout espace commentaire pour retour utilisateur
 
-<!-- 5. mise en avant du chrono -> si on appuye sur le start du chrono, tu peu commencer les exercice --> ✅
+5. mise en avant du chrono -> si on appuye sur le start du chrono, tu peu commencer les exercice ✅
 
 6. ajouter ctrl + 0 pour reinitialisé le zoom
 
