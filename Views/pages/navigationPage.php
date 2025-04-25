@@ -131,5 +131,38 @@ foreach ($exercises as $index => $exercise) {
     echo '</div>'; // fin fullscreen-slide
 }
 ?>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Scroll auto vers l'exercice mémorisé
+        const last = localStorage.getItem('lastExercise');
+        if (last) {
+            const target = document.getElementById(last);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'instant'
+                });
+            }
+        }
+
+        // Enregistre la position quand on clique sur un bouton vers un slide
+        document.querySelectorAll('button').forEach(button => {
+            const onclick = button.getAttribute('onclick');
+            const match = onclick && onclick.match(/document\.getElementById\('([^']+)'\)/);
+
+            if (match && match[1]) {
+                button.addEventListener('click', () => {
+                    localStorage.setItem('lastExercise', match[1]);
+                });
+            }
+
+            // Cas du bouton de fin : efface la progression
+            if (onclick && onclick.includes("window.location.href='vscode'")) {
+                button.addEventListener('click', () => {
+                    localStorage.removeItem('lastExercise');
+                });
+            }
+        });
+    });
+</script>
 
 <script src="<?= ROOT ?>/Public/js/keyDisabled.js"></script>

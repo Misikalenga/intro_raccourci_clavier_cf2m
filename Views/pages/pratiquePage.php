@@ -138,22 +138,30 @@ foreach ($exercices as $exercice) {
 
 <!-- Chrono -->
 <div class="chrono shadow border border-1 border-dark d-flex align-items-center justify-content-center gap-2 position-fixed top-0 start-50 translate-middle-x p-2 w-auto w-sm-25 w-md-20 w-lg-15">
-    <p id="time" class="chrono-time mb-0">00:00:000</p>
-    <button id="startPause" class="btn btn-primary p-2 chrono-btn" onclick="startPauseChrono()">
-        <i class="fas fa-play"></i>
-    </button>
-    <button id="reset" class="btn btn-danger p-2 chrono-btn" onclick="resetChrono()">
-        <i class="fas fa-sync"></i>
-    </button>
+  <p id="time" class="chrono-time mb-0">00:00:000</p>
+  <button id="startPause" class="btn btn-primary p-2 chrono-btn" onclick="startPauseChrono()">
+    <i class="fas fa-play"></i>
+  </button>
+  <button id="reset" class="btn btn-danger p-2 chrono-btn" onclick="resetChrono()">
+    <i class="fas fa-sync"></i>
+  </button>
 </div>
 
-<!-- Script JS -->
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
+    // Scroll automatique si un exercice a été enregistré
+    const lastExercise = localStorage.getItem('lastExercise');
+    if (lastExercise) {
+      const target = document.querySelector(lastExercise);
+      if (target) {
+        target.scrollIntoView({ behavior: 'instant' });
+      }
+    }
+
     const valeursAttendues = <?php echo json_encode($valeursAttendues); ?>;
 
-    document.querySelectorAll('.btn-valider').forEach(function(btn) {
-      btn.addEventListener('click', function() {
+    document.querySelectorAll('.btn-valider').forEach(function (btn) {
+      btn.addEventListener('click', function () {
         const editorId = this.getAttribute('data-editor');
         const input = document.getElementById(editorId)?.value.trim();
         const attendu = valeursAttendues[editorId] ?? null;
@@ -161,31 +169,32 @@ foreach ($exercices as $exercice) {
         const slide = document.getElementById(editorId.replace('editor-', ''));
         const nextBtn = slide?.querySelector('.btn-next');
 
-        // Vérification si l'exercice est correct
         if (attendu && input === attendu) {
+          // Bonne réponse
           resultDiv.textContent = "Bonne réponse ✅";
           resultDiv.classList.remove('text-danger');
           resultDiv.classList.add('text-success');
 
-          // Si c'est le dernier exercice (exercice 5)
+          // Si c'est le dernier exercice
           if (editorId === 'editor-exercise5') {
-            // Ajouter l'attribut onclick pour rediriger vers outro
             const finishButton = slide.querySelector('.btn-next');
             finishButton.setAttribute('onclick', "window.location.href='navigation'");
           }
 
-          // Activer le bouton suivant
           if (nextBtn) {
             nextBtn.disabled = false;
             nextBtn.classList.remove('bg-secondary');
             nextBtn.classList.add('bg-success');
+
+            // Supprimer la position sauvegardée : exercice terminé
+            localStorage.removeItem('lastExercise');
           }
         } else {
+          // Mauvaise réponse
           resultDiv.textContent = "Mauvaise réponse ❌";
           resultDiv.classList.remove('text-success');
           resultDiv.classList.add('text-danger');
 
-          // Désactiver le bouton suivant si l'exercice est incorrect
           if (nextBtn) {
             nextBtn.disabled = true;
             nextBtn.classList.remove('bg-success');
@@ -194,17 +203,20 @@ foreach ($exercices as $exercice) {
         }
       });
     });
-  });
 
+    // Gestion du scroll et mémorisation de position
+    document.querySelectorAll('[data-scroll-target]').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const targetSelector = this.getAttribute('data-scroll-target');
+        const target = document.querySelector(targetSelector);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
 
-  document.querySelectorAll('[data-scroll-target]').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const target = document.querySelector(this.getAttribute('data-scroll-target'));
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth'
-        });
-      }
+          // Mémoriser la position SEULEMENT si le bouton n'est pas un passage final
+          // (on pourrait aussi ajouter un attribut data-reset-scroll si besoin)
+          localStorage.setItem('lastExercise', targetSelector);
+        }
+      });
     });
   });
 </script>
