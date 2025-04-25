@@ -99,7 +99,7 @@ $exercices = [
     </aside>
 
     <div class="d-flex align-items-center gap-3 mt-4">
-      <button type="button" class="btn btn-primary btn-valider" data-scroll-target="#exercise1">Commencer l'exercice 1</button>
+      <button type="button" id="startButton" class="btn btn-primary btn-valider" data-scroll-target="#exercise1">Commencer l'exercice 1</button>
     </div>
   </div>
 </div>
@@ -130,13 +130,13 @@ foreach ($exercices as $exercice) {
       </div>
     </div>
     <div class="d-flex justify-content-center gap-3 mt-5">
-      <button type="button" class="btn btn-darkmode btn-secondary btn-next text-center" data-scroll-target="' . $exercice['next_exercise'] . '" disabled>' . $exercice['button_text'] . '</button>
+      <button type="button"  class="btn btn-darkmode btn-secondary btn-next text-center" data-scroll-target="' . $exercice['next_exercise'] . '" disabled>' . $exercice['button_text'] . '</button>
     </div>
   </div>';
 }
 ?>
 
-<!-- Chrono -->
+<!-- Chrono
 <div class="chrono shadow border border-1 border-dark d-flex align-items-center justify-content-center gap-2 position-fixed top-0 start-50 translate-middle-x p-2 w-auto w-sm-25 w-md-20 w-lg-15">
   <p id="time" class="chrono-time mb-0">00:00:000</p>
   <button id="startPause" class="btn btn-primary p-2 chrono-btn" onclick="startPauseChrono()">
@@ -145,7 +145,7 @@ foreach ($exercices as $exercice) {
   <button id="reset" class="btn btn-danger p-2 chrono-btn" onclick="resetChrono()">
     <i class="fas fa-sync"></i>
   </button>
-</div>
+</div> -->
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {

@@ -185,7 +185,7 @@ EOD,
 <?php endforeach; ?>
 
 <!-- Chrono (identique à ta page zone de texte) -->
-<div class="chrono shadow border border-1 border-dark d-flex align-items-center justify-content-center gap-2 position-fixed top-0 start-50 translate-middle-x p-2">
+<!-- <div class="chrono shadow border border-1 border-dark d-flex align-items-center justify-content-center gap-2 position-fixed top-0 start-50 translate-middle-x p-2">
     <p id="time" class="chrono-time mb-0">00:00:000</p>
     <button id="startPause" class="btn btn-primary p-2 chrono-btn" onclick="startPauseChrono()">
         <i class="fas fa-play"></i>
@@ -193,7 +193,7 @@ EOD,
     <button id="reset" class="btn btn-danger p-2 chrono-btn" onclick="resetChrono()">
         <i class="fas fa-sync"></i>
     </button>
-</div>
+</div> -->
 
 <!-- Monaco & logique inchangée, juste intégration des data-scroll-target -->
 <script src="https://cdn.jsdelivr.net/npm/monaco-editor/min/vs/loader.js"></script>

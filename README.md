@@ -3,10 +3,6 @@
 ## Voici quelques petites remarques :
 
 
-- Si on donne une mauvaise réponse, le site nous le signale mais n'explique pas la raison de l'erreur. (je n'ai pas encore régarder ton code mais tu peux facilement indiqué le problème avec JS....Je reviens sur ce point dès que j'ai régarder ton code).
-
-# Alors, tout de suite je vois une erreur grave. Ne mets jamais ton `config.php` sur GitHub, même dans un dépôt privé ! Je vois que tu as aussi un `config.prod.php` qui n’est pas sur GitHub, mais le `dev.php` contient tes paramètres de connexion actuels.
-
 - Dans ton `chrono.js`, tu peux améliorer ton utilisation de `getElement...`. Tel que c’est fait, chaque fois que l’utilisateur clique sur un bouton, le script recherche l’élément dans le DOM.
 - Ce n’est pas très grave pour les inputs utilisateur, mais tu utilises la même méthode à chaque milliseconde dans la fonction `updateTime`.
 ```js
@@ -52,7 +48,7 @@ minute trop grand (non responsiv)
 ## SCRUM
 # cycle 1 prio absolu
 
-1. Pendant la pratique, si on rafraîchit la page, on revient à l'introduction des questions. Utilise `localStorage` (JS) ou `$_SESSION` (PHP) pour garder la page sur la question en cours.
+<!-- 1. Pendant la pratique, si on rafraîchit la page, on revient à l'introduction des questions. Utilise `localStorage` (JS) ou `$_SESSION` (PHP) pour garder la page sur la question en cours. --> ✅
 
 2. Ton `index.php` contient ton switch de routage. Crée un fichier `Controllers/RouteController.php` et déplace tout ce code dedans.
 
@@ -60,8 +56,9 @@ minute trop grand (non responsiv)
 
 4. ajout espace commentaire pour retour utilisateur
 
-5. mise en avant du chrono -> si on appuye sur le start du chrono, tu peu commencer les exercice
-ajouter ctrl + 0 pour reinitialisé le zoom
+<!-- 5. mise en avant du chrono -> si on appuye sur le start du chrono, tu peu commencer les exercice --> ✅
+
+6. ajouter ctrl + 0 pour reinitialisé le zoom
 
 # cycle 2 prio modéré
 
