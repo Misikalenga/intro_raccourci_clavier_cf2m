@@ -1,4 +1,4 @@
-## Retour de Lee
+# Retour de Lee
 
 ## Voici quelques petites remarques :
 
@@ -46,6 +46,9 @@ minute trop grand (non responsiv)
 
 
 ## SCRUM
+
+
+
 # cycle 1 prio absolu
 
 1. Pendant la pratique, si on rafraîchit la page, on revient à l'introduction des questions. Utilise `localStorage` (JS) ou `$_SESSION` (PHP) pour garder la page sur la question en cours. ✅
