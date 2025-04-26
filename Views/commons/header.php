@@ -20,6 +20,11 @@
                     <li class="nav-item">
                         <a class="nav-link active fs-5" href="training">Pratique</a>
                     </li>
+                    <?php if (isset($_SESSION['rôle']) && $_SESSION['rôle'] === 'admin'): ?>
+                    <li class="nav-item">
+                        <a class="nav-link active fs-5" href="adminDashboard">Dashboard</a>
+                    </li>
+                <?php endif; ?>
                 </ul>
                 <!-- Connexion -->
                 <ul class="navbar-nav d-flex align-items-start">

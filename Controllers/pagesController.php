@@ -108,3 +108,17 @@ function errorPage()
 
     renderPage($data_page);
 }
+
+function AdminDashboardPage($pdo)
+{
+    $comments = getComments($pdo);
+    $data_page = [
+        'description' => 'Page dashboard',
+        'title' => 'Dashboard',
+        'view' => 'Views/pages/adminDashboardPage.php',
+        'layout' => 'Views/commons/layout.php',
+        'comments' => $comments,
+    ];
+
+    renderPage($data_page);
+}

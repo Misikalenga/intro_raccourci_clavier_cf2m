@@ -16,22 +16,34 @@ switch ($url[0]) {
 
         connexionPage();
         break;
-    case 'connexion':
+        case 'connexion':
 
+        // Récupérer les données utilisateur
         $data = getUser($pdo, $_POST['login']);
-
+    
+        // Vérifiez si l'utilisateur existe et si le mot de passe est correct
         if ($data && $data['user'] === $_POST['login'] && password_verify($_POST['password'], $data['password'])) {
+            // Initialiser les variables de session
             $_SESSION['user'] = $data['user'];
+            $_SESSION['rôle'] = $data['rôle'];
             $_SESSION['statue'] = "connecté";
-            header('Location: home'); // Rediriger vers la page d'accueil après connexion
+    
+            // Rediriger en fonction du rôle
+            if ($data['rôle'] === 'admin') {
+                header('Location: home'); // Redirection pour les administrateurs
+            } else {
+                header('Location: home'); // Redirection pour les utilisateurs simples
+            }
             exit();
         } else {
+            // En cas d'échec de connexion
             $_SESSION['user'] = "lambda";
             $_SESSION['statue'] = "non connecté";
             $_SESSION['error_message'] = "Nom d'utilisateur ou mot de passe incorrect !";
-            header('Location: connexionPage');
+            header('Location: connexionPage'); // Redirection vers la page de connexion
             exit();
         }
+    
 
     case 'inscriptionPage':
         inscriptionPage();
@@ -66,6 +78,21 @@ switch ($url[0]) {
         break;
     case 'outro':
         outroPage();
+        break;
+    case 'submitComment':
+        $data = setComment($pdo, $_POST['username'], $_POST['comment']);
+
+        if ($data === true) {
+            $_SESSION['success_message'] = "Votre message a été envoyé avec succès !";
+            header('Location: home');
+            exit();
+        } else {
+            $_SESSION['error_message'] = $data; // Récupère 
+            header('Location: outro');
+        }
+        break;
+    case 'adminDashboard':
+        AdminDashboardPage($pdo);
         break;
     case 'destroy':
         require_once('Views/pages/deconnexion.php');

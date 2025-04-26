@@ -1,4 +1,11 @@
 <div class="container mt-5 text-center">
+    <?php
+    if (isset($_SESSION['error_message'])) {
+        echo '<div class="alert alert-danger" role="alert">' . htmlspecialchars($_SESSION['error_message']) . '</div>';
+        unset($_SESSION['error_message']);
+    }
+
+    ?>
     <h1 class="display-4">🎉 Félicitations !</h1>
     <p class="lead mt-3">Vous avez terminé tous les exercices du module sur les raccourcis clavier Windows & VSCode.</p>
 
@@ -21,12 +28,13 @@
         <p class="text-muted">Entraînez-vous régulièrement pour solidifier vos automatismes.</p>
     </div>
 
+
     <!-- Formulaire pour avis -->
     <div class="my-5 text-start">
         <h4>💬 Donnez votre avis :</h4>
-        <form method="POST" action="submitComment.php"> <!-- Changez `submitComment.php` selon votre logique -->
+        <form method="POST" action="submitComment"> <!-- Changez `submitComment.php` selon votre logique -->
             <div class="mb-3">
-                <label for="username" class="form-label">Votre nom :</label>
+                <label for="name" class="form-label">Votre nom :</label>
                 <input type="text" name="username" id="username" class="form-control border border-1 border-dark" placeholder="Entrez votre nom" required>
             </div>
             <div class="mb-3">
