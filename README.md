@@ -30,7 +30,7 @@ if ($_SESSION["user_role"] !== "ROLE_ADMIN") {
 $_SESSION["user_role"] = $req["user_roles"];
 ```
 
-## Retour de marie
+# Retour de marie
 
 ## pratique page
 changer le <code>BACKSPACE</code> par la vrai touche backspace -> pratiquePage -> exo2
