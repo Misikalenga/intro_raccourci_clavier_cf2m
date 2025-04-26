@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 07 avr. 2025 à 19:54
+-- Généré le : sam. 26 avr. 2025 à 17:32
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `raccourci_projet`
+-- Base de données : `raccourcis_clavier_proj`
 --
 
 -- --------------------------------------------------------
@@ -64,57 +64,8 @@ INSERT INTO `raccourcis` (`id`, `shortcut`, `description`) VALUES
 (24, 'Shift + Clic', 'Sélectionner plusieurs éléments dans une liste ou une fenêtre.'),
 (25, 'F2', 'Renommer l\'élément sélectionné.'),
 (26, 'F12', 'Ouvre les outils de développement du navigateur.'),
-(27, 'Ctrl + Shift + C', 'Ouvre les outils de développement du navigateur et active l\'outil de sélection d\'éléments.');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `raccourcis_vscode`
---
-
-CREATE TABLE `raccourcis_vscode` (
-  `id` int(11) NOT NULL,
-  `shortcut` varchar(250) NOT NULL,
-  `description` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `raccourcis_vscode`
---
-
-INSERT INTO `raccourcis_vscode` (`id`, `shortcut`, `description`) VALUES
-(1, 'Shift + Alt + ↓ ou ↑', 'Dupliquer la ligne vers le bas/haut'),
-(2, 'Alt + ↓ ou ↑', 'Déplacer la ligne sélectionnée vers le bas/haut'),
-(3, 'Ctrl + Enter', 'Insérer une ligne en dessous sans bouger le curseur'),
-(4, 'Ctrl + Shift + L', 'Sélectionner toutes les occurrences du mot sélectionné'),
-(5, 'Ctrl + /', 'Commenter / Décommenter la ligne'),
-(6, 'Ctrl + Tab', 'Naviguer entre les fichiers récemment ouverts'),
-(7, 'Ctrl + Shift + → ou ←', 'Sélectionner mot par mot'),
-(8, 'Ctrl + ù', 'Basculer le terminal intégré'),
-(9, 'Ctrl + Clic', 'Sélectionner plusieurs éléments individuellement'),
-(10, 'Ctrl + D', 'Sélectionner les occurences du mot un par un');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `users`
---
-
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `user` varchar(250) NOT NULL,
-  `password` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `users`
---
-
-INSERT INTO `users` (`id`, `user`, `password`) VALUES
-(93, 'a', '$2y$10$FKmAfo782hk3GHW79pioLeadTDjlsoEPG..H2Y2Nw9Ta.vFYuBCM.'),
-(94, 'dazd', '$2y$10$j.KrHc61cLOMzG6CLthJXugPiWuAsxtJMFkkPaX/x.5T.YpsbrBEm'),
-(95, 'azdazd', '$2y$10$hiF6bbPypaoUX0yqVMuexuh2yg3s7Fw2M6Ck0t6Nd8JndS79iMr/C'),
-(96, 'azdaz', '$2y$10$G6PTWavwbkn7jueAVkMKbeUpgdM2/E8yKTYsBrvByBb/JQ8xpOlGG');
+(27, 'Ctrl + Shift + C', 'Ouvre les outils de développement du navigateur et active l\'outil de sélection d\'éléments.'),
+(29, 'Ctrl + 0', 'Permet de réinitialisé le zoom à 100% (Par défaut)');
 
 --
 -- Index pour les tables déchargées
@@ -127,18 +78,6 @@ ALTER TABLE `raccourcis`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `raccourcis_vscode`
---
-ALTER TABLE `raccourcis_vscode`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -146,19 +85,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `raccourcis`
 --
 ALTER TABLE `raccourcis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
-
---
--- AUTO_INCREMENT pour la table `raccourcis_vscode`
---
-ALTER TABLE `raccourcis_vscode`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT pour la table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
