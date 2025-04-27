@@ -14,16 +14,16 @@ function registerNewUserDB(PDO $pdo, string $user, string $password): bool
         return false; // Retourne false si l'utilisateur existe déjà
     }
 
-    // Rôle par défaut : 'simple'
+    // role par défaut : 'simple'
     $role = 'simple';
 
-    // Insérer le nouvel utilisateur avec le rôle par défaut
-    $req = "INSERT INTO users (user, password, rôle) VALUES (:user, :password, :role)";
+    // Insérer le nouvel utilisateur avec le role par défaut
+    $req = "INSERT INTO users (user, password, role) VALUES (:user, :password, :role)";
     $stmt = $pdo->prepare($req);
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
     $stmt->bindParam(':user', $user, PDO::PARAM_STR);
     $stmt->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
-    $stmt->bindParam(':role', $role, PDO::PARAM_STR); // Ajout du rôle par défaut
+    $stmt->bindParam(':role', $role, PDO::PARAM_STR); // Ajout du role par défaut
     $stmt->execute();
     $stmt->closeCursor();
 
@@ -73,7 +73,7 @@ function getComments(PDO $pdo): array
 // recupere un utilisateur
 function getUser(PDO $pdo, string $user): string|array
 {
-    $req = $pdo->prepare('SELECT user, password, rôle FROM users WHERE user = :user');
+    $req = $pdo->prepare('SELECT user, password, role FROM users WHERE user = :user');
     $req->bindValue(':user', $user, PDO::PARAM_STR);
     $req->execute();
     return $req->fetch();

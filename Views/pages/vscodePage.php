@@ -111,6 +111,11 @@ EOD,
         overflow-y: hidden;
         scroll-snap-type: y mandatory;
     }
+
+    h4 {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-weight: bold;
+    }
 </style>
 
 <!-- Écran d’introduction -->

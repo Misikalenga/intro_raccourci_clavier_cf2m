@@ -7,4 +7,6 @@ const DB_CONNECT_CHARSET = "utf8";
 const DB_CONNECT_USER = "root";
 const DB_CONNECT_PWD = "";
 
+
+
 const DSN = DB_CONNECT_TYPE . ":host=" . DB_CONNECT_HOST . ";port=" . DB_CONNECT_PORT . ";dbname=" . DB_CONNECT_NAME . ";charset=" . DB_CONNECT_CHARSET;
