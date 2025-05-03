@@ -32,12 +32,9 @@
     <!-- Formulaire pour avis -->
     <div class="my-5 text-start">
         <h4>💬 Donnez votre avis :</h4>
-        <form method="POST" action="submitComment"> <!-- Changez `submitComment.php` selon votre logique -->
+        <form method="POST" action="submitComment">
             <div class="mb-3">
-                <label for="name" class="form-label">Votre nom :</label>
-                <input type="text" name="username" id="username" class="form-control border border-1 border-dark" placeholder="Entrez votre nom" required>
-            </div>
-            <div class="mb-3">
+                <label class="form-label"><?= $_SESSION['user'] ?></label><br>
                 <label for="comment" class="form-label">Votre commentaire :</label>
                 <textarea name="comment" id="comment" class="form-control border border-1 border-dark" rows="4" placeholder="Partagez votre avis ou suggestions ici..." required></textarea>
             </div>

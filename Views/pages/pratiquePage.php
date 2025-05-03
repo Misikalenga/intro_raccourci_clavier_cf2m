@@ -67,7 +67,7 @@ $exercices = [
     ],
     'textarea' => 'tzu Daondez, czopyiexz ccettex liagne: "<butztonez czlass="btn pzimary">cliquex çi</butztone>", zxupprimezx rxeussxzxi une zxpartix dux Fzéoliciatxztionxs, texxte avzec! backsppzacezx, zxannulezx zxette aqs xpartx zavec ctrz+zz zx.',
     'button_text' => 'Terminer l\'exercice',
-    'next_exercise' => '#exercise6'
+    'next_exercise' => '#exercise6' 
   ]
 ];
 ?>
@@ -79,8 +79,8 @@ $exercices = [
     margin: 0;
     padding: 0;
     height: 100vh;
-    overflow-y: hidden;
-    scroll-snap-type: y mandatory;
+    /* overflow-y: hidden; */
+    /* scroll-snap-type: y mandatory; */
   }
 
   h4 {
@@ -135,17 +135,6 @@ foreach ($exercices as $exercice) {
   </div>';
 }
 ?>
-
-<!-- Chrono
-<div class="chrono shadow border border-1 border-dark d-flex align-items-center justify-content-center gap-2 position-fixed top-0 start-50 translate-middle-x p-2 w-auto w-sm-25 w-md-20 w-lg-15">
-  <p id="time" class="chrono-time mb-0">00:00:000</p>
-  <button id="startPause" class="btn btn-primary p-2 chrono-btn" onclick="startPauseChrono()">
-    <i class="fas fa-play"></i>
-  </button>
-  <button id="reset" class="btn btn-danger p-2 chrono-btn" onclick="resetChrono()">
-    <i class="fas fa-sync"></i>
-  </button>
-</div> -->
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {

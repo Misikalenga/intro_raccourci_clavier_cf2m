@@ -3,11 +3,10 @@
 define('ROOT', str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https://" : "http://") . $_SERVER['HTTP_HOST'] . $_SERVER["PHP_SELF"]));
 
 if (empty($_GET['page'])) {
-    $url[0] = "home";
+    $url[0] = "inscriptionPage";
 } else {
     $url = explode("/", filter_var($_GET['page'], FILTER_SANITIZE_URL));
 }
-
 switch ($url[0]) {
     case 'home':
         homePage();
@@ -24,7 +23,9 @@ switch ($url[0]) {
         // Vérifiez si l'utilisateur existe et si le mot de passe est correct
         if ($data && $data['user'] === $_POST['login'] && password_verify($_POST['password'], $data['password'])) {
             // Initialiser les variables de session
+            $_SESSION['id'] = $data['id'];
             $_SESSION['user'] = $data['user'];
+            $_SESSION['score'] = $data['score'];
             $_SESSION['role'] = $data['role'];
             $_SESSION['statue'] = "connecté";
 
@@ -36,12 +37,10 @@ switch ($url[0]) {
             }
             exit();
         } else {
-            // En cas d'échec de connexion
-            $_SESSION['user'] = "lambda";
-            $_SESSION['statue'] = "non connecté";
             $_SESSION['error_message'] = "Nom d'utilisateur ou mot de passe incorrect !";
-            header('Location: connexionPage'); // Redirection vers la page de connexion
+            header('Location: connexionPage'); // Redirection vers la connexion
             exit();
+            
         }
 
 
@@ -80,7 +79,7 @@ switch ($url[0]) {
         outroPage();
         break;
     case 'submitComment':
-        $data = setComment($pdo, $_POST['username'], $_POST['comment']);
+        $data = setComment($pdo, $_POST['comment']);
 
         if ($data === true) {
             $_SESSION['success_message'] = "Votre message a été envoyé avec succès !";
@@ -98,7 +97,12 @@ switch ($url[0]) {
         require_once('Views/pages/deconnexion.php');
         connexionPage();
         break;
+    case 'score':
+        // scorePage($pdo, $user);
+        
+        break;
     default:
         errorPage();
         break;
 }
+// showArray($_SESSION);

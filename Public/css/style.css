@@ -33,7 +33,12 @@ table > tbody > tr > td:nth-child(2) {
 table > tbody > tr > td:nth-child(1) {
   text-align: center; /* Centre le texte */
 }
-
+table td{
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 900px;
+}
 tr > th:nth-of-type(1) {
   width: 1%;
 }
@@ -189,4 +194,10 @@ body.dark-mode .error404 {
 
 body.dark-mode .text-muted{
   color: white !important;
+}
+
+.link-disabled {
+  pointer-events: none;
+  opacity: 0.5; 
+  cursor: not-allowed; 
 }

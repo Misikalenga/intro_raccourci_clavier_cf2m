@@ -108,8 +108,8 @@ EOD,
         margin: 0;
         padding: 0;
         height: 100vh;
-        overflow-y: hidden;
-        scroll-snap-type: y mandatory;
+        /* overflow-y: hidden; */
+        /* scroll-snap-type: y mandatory; */
     }
 
     h4 {

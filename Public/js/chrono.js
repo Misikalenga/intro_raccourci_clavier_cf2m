@@ -1,63 +1,94 @@
-
 document.addEventListener("DOMContentLoaded", () => {
     // === Création dynamique du HTML ===
     const chronoContainer = document.createElement('div');
     chronoContainer.id = 'chrono';
     chronoContainer.className = 'chrono shadow border border-1 border-dark gap-2 position-fixed top-0 start-50 translate-middle-x p-2 w-auto w-sm-25 w-md-20 w-lg-15';
-
+    
     const timeDisplay = document.createElement('p');
     timeDisplay.id = 'time';
     timeDisplay.className = 'chrono-time mb-0';
     timeDisplay.innerText = '00:00:000';
-
-    const startPauseBtn = document.createElement('button');
-    startPauseBtn.id = 'startPause';
-    startPauseBtn.className = 'btn btn-primary p-2 chrono-btn';
-    startPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-
-    const resetBtn = document.createElement('button');
-    resetBtn.id = 'reset';
-    resetBtn.className = 'btn btn-danger p-2 chrono-btn';
-    resetBtn.innerHTML = '<i class="fas fa-sync"></i>';
-
-    chronoContainer.append(timeDisplay, startPauseBtn, resetBtn);
+    
+    chronoContainer.append(timeDisplay);
     document.body.appendChild(chronoContainer);
 
-    // === Logique du chrono ===
-    let startTime, intervalId, running = false;
+    const startButton = document.getElementById("startButton");
+    const validerButtons = document.querySelectorAll(".btn-valider");
+
+    let startTime, intervalId;
+    let running = localStorage.getItem("running") === "true";
+    let savedElapsedTime = parseInt(localStorage.getItem("elapsedTime")) || 0;
+    let exerciceValide = localStorage.getItem("exerciceValide") === "true"; // Vérification si l'exercice est validé
 
     function updateTime() {
-        const elapsed = Date.now() - startTime;
-        const minutes = String(Math.floor(elapsed / 60000)).padStart(2, '0');
-        const seconds = String(Math.floor((elapsed % 60000) / 1000)).padStart(2, '0');
-        const ms = String(elapsed % 1000).padStart(3, '0');
-        timeDisplay.innerText = `${minutes}:${seconds}:${ms}`;
+        const elapsedTime = Date.now() - startTime;
+        const minutes = Math.floor(elapsedTime / 60000);
+        const seconds = Math.floor((elapsedTime % 60000) / 1000);
+        const milliseconds = elapsedTime % 1000;
+        
+        timeDisplay.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}:${milliseconds.toString().padStart(3, '0')}`;
+        localStorage.setItem("elapsedTime", elapsedTime);
     }
 
-    function startPauseChrono() {
-        if (!running) {
-            startTime = Date.now() - (Number(localStorage.getItem('elapsedTime')) || 0);
-            intervalId = setInterval(updateTime, 10);
-            startPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            running = true;
-        } else {
-            clearInterval(intervalId);
-            localStorage.setItem('elapsedTime', Date.now() - startTime);
-            startPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-            running = false;
-        }
+    function startChrono() {
+        startTime = Date.now() - savedElapsedTime;
+        intervalId = setInterval(updateTime, 10);
+        localStorage.setItem("running", "true");
     }
 
-    function resetChrono() {
+    function stopChrono() {
         clearInterval(intervalId);
+        savedElapsedTime = Date.now() - startTime;
+        localStorage.setItem("elapsedTime", savedElapsedTime);
+        localStorage.setItem("running", "false");
+        localStorage.setItem("exerciceValide", "true");
+    
+        fetch("Models/CrudModel.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: `time=${savedElapsedTime}&user=${currentUser}` // 🔴 Envoie aussi le nom de l'utilisateur
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Réponse du serveur :", data);
+            alert(data.message || "Erreur d'enregistrement !");
+        })
+        .catch(error => console.error("Erreur d'enregistrement :", error));
+        
+    
+        // 🔴 Réinitialisation après validation correcte
+        savedElapsedTime = 0;
+        localStorage.setItem("elapsedTime", 0);
+        timeDisplay.innerText = "00:00:000";
+    
+        startTime = null;
         running = false;
-        localStorage.removeItem('elapsedTime');
-        timeDisplay.innerText = '00:00:000';
-        startPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+    }
+    
+    if (startButton) {
+        startButton.addEventListener("click", () => {
+            if (!running) {
+                startChrono();
+                running = true;
+            }
+        });
     }
 
-    // === Ajout des listeners ===
-    startPauseBtn.addEventListener('click', startPauseChrono);
-    resetBtn.addEventListener('click', resetChrono);
-    document.getElementById('startButton')?.addEventListener('click', startPauseChrono);
+    if (validerButtons.length > 0) {
+        validerButtons[validerButtons.length - 1].addEventListener("click", () => {
+            const lastExerciseId = "editor-exercise5";
+            const lastTextarea = document.getElementById(lastExerciseId);
+
+            // 🟢 Vérifier si l'exercice est correctement validé
+            if (running && lastTextarea && lastTextarea.value.trim() === "Félicitations, tu as réussi !") {
+                stopChrono(); // Stoppe le chrono et envoie le score au serveur
+                running = false;
+            }
+        });
+    }
+
+    // 🟢 Reprise automatique uniquement si l'exercice **n'est pas encore validé**
+    if (running && !exerciceValide) {
+        startChrono();
+    }
 });

@@ -122,3 +122,17 @@ function AdminDashboardPage($pdo)
 
     renderPage($data_page);
 }
+
+function scorePage($pdo, $user)
+{
+    $scores = getAllScores($pdo, $user);
+    $data_page = [
+        'description' => 'Page de score',
+        'title' => 'score',
+        'view' => 'Views/pages/save_score.php',
+        'layout' => 'Views/commons/layout.php',
+        'scores' => $scores,
+    ];
+
+    renderPage($data_page);
+}

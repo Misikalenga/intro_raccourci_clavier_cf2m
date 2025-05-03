@@ -18,5 +18,5 @@ if (ini_get("session.use_cookies")) {
 }
 
 // Redirection après la déconnexion
-header('Location: home'); // Remplacez par la page de votre choix
+header('Location: connexionPage'); // Remplacez par la page de votre choix
 exit();

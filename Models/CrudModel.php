@@ -1,5 +1,4 @@
 <?php
-
 require_once 'PdoModel.php';
 
 // enregistre un nouvel utilisateur
@@ -32,14 +31,16 @@ function registerNewUserDB(PDO $pdo, string $user, string $password): bool
 
 
 // enregistre un nouveau commentaire
-function setComment(PDO $pdo, string $user, string $message): bool|string
+function setComment(PDO $pdo, string $message): bool|string
 {
-    if (empty(trim($user)) || empty(trim($message))) {
-        return "Erreur : Les champs 'user' et 'message' ne peuvent pas être vides.";
+    if (!isset($_SESSION['id'])) {
+        return "Erreur : Vous devez être connecté pour envoyer un commentaire.";
     }
 
-    if (strlen($user) < 2 || strlen($user) > 60) {
-        return "Erreur : Le nom est trop court.";
+    $user_id = $_SESSION['id']; // ✅ Récupère l'ID utilisateur connecté
+
+    if (empty(trim($message))) {
+        return "Erreur : Le message ne peut pas être vide.";
     }
 
     if (strlen($message) < 10 || strlen($message) > 500) {
@@ -47,9 +48,9 @@ function setComment(PDO $pdo, string $user, string $message): bool|string
     }
 
     try {
-        $req = "INSERT INTO comments (name, message) VALUES (:name, :message)";
+        $req = "INSERT INTO comments (user_id, message) VALUES (:user_id, :message)";
         $stmt = $pdo->prepare($req);
-        $stmt->bindParam(':name', $user, PDO::PARAM_STR);
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $stmt->bindParam(':message', $message, PDO::PARAM_STR);
 
         // Exécuter la requête
@@ -58,13 +59,18 @@ function setComment(PDO $pdo, string $user, string $message): bool|string
 
         return true;
     } catch (PDOException $e) {
-
         return "Erreur SQL : " . $e->getMessage();
     }
 }
+
 function getComments(PDO $pdo): array
 {
-    $req = $pdo->prepare('SELECT * FROM comments'); // Ajout explicite des colonnes
+    $req = $pdo->prepare("
+        SELECT users.id, users.user, comments.message 
+        FROM comments
+        JOIN users ON comments.user_id = users.id
+        
+    ");
     $req->execute();
     return $req->fetchAll();
 }
@@ -73,7 +79,7 @@ function getComments(PDO $pdo): array
 // recupere un utilisateur
 function getUser(PDO $pdo, string $user): string|array
 {
-    $req = $pdo->prepare('SELECT user, password, role FROM users WHERE user = :user');
+    $req = $pdo->prepare('SELECT * FROM users WHERE user = :user');
     $req->bindValue(':user', $user, PDO::PARAM_STR);
     $req->execute();
     return $req->fetch();
@@ -91,5 +97,28 @@ function getShortcutWindowsDB(PDO $pdo): array
 function getShortcutVscodeDB(PDO $pdo): array
 {
     $req = $pdo->query('SELECT id, shortcut, description FROM raccourcis_vscode');
+    return $req->fetchAll();
+}
+
+
+function saveScore(PDO $pdo, string $user, int $score): bool
+{
+    try {
+        $req = "UPDATE users SET score = :score WHERE user = :user"; // 🔴 Met à jour le score pour l'utilisateur
+        $stmt = $pdo->prepare($req);
+        $stmt->bindParam(':score', $score, PDO::PARAM_INT);
+        $stmt->bindParam(':user', $user, PDO::PARAM_STR);
+
+        return $stmt->execute();
+    } catch (PDOException $e) {
+        error_log("Erreur SQL : " . $e->getMessage()); // ✅ Enregistrer l'erreur dans les logs
+        return false;
+    }
+}
+
+function getAllScores(PDO $pdo, string $user): array {
+    $req = $pdo->prepare("SELECT score FROM users WHERE user = :user");
+    $req->bindParam(':user', $user, PDO::PARAM_STR);
+    $req->execute();
     return $req->fetchAll();
 }
