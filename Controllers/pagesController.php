@@ -57,11 +57,13 @@ function introPage($pdo)
 }
 function pratiquePage()
 {
+
     $data_page = [
         'description' => 'Page de pratique',
         'title' => 'Pratique',
         'view' => 'Views/pages/pratiquePage.php',
         'layout' => 'Views/commons/layout.php',
+
     ];
 
     renderPage($data_page);

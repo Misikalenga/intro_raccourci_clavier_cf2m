@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // === Création dynamique du HTML ===
     const chronoContainer = document.createElement('div');
     chronoContainer.id = 'chrono';
     chronoContainer.className = 'chrono shadow border border-1 border-dark gap-2 position-fixed top-0 start-50 translate-middle-x p-2 w-auto w-sm-25 w-md-20 w-lg-15';
@@ -19,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let running = localStorage.getItem("running") === "true";
     let savedElapsedTime = parseInt(localStorage.getItem("elapsedTime")) || 0;
     let exerciceValide = localStorage.getItem("exerciceValide") === "true"; // Vérification si l'exercice est validé
+    let currentUser = localStorage.getItem("currentUser"); // Assure-toi que currentUser est défini
 
     function updateTime() {
         const elapsedTime = Date.now() - startTime;
@@ -37,25 +37,41 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function stopChrono() {
+        console.log("currentUser JS :", currentUser);
+
         clearInterval(intervalId);
         savedElapsedTime = Date.now() - startTime;
         localStorage.setItem("elapsedTime", savedElapsedTime);
         localStorage.setItem("running", "false");
         localStorage.setItem("exerciceValide", "true");
     
-        fetch("Models/CrudModel.php", {
+        fetch("Controllers/routeController.php?page=training", {
             method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: `time=${savedElapsedTime}&user=${currentUser}` // 🔴 Envoie aussi le nom de l'utilisateur
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: `time=${encodeURIComponent(savedElapsedTime)}&user=${encodeURIComponent(currentUser)}`
         })
-        .then(response => response.json())
-        .then(data => {
-            console.log("Réponse du serveur :", data);
-            alert(data.message || "Erreur d'enregistrement !");
-        })
-        .catch(error => console.error("Erreur d'enregistrement :", error));
         
-    
+        .then(response => response.text())
+        .then(text => {
+            console.log("Réponse brute du serveur :", text);
+        
+            // Vérifie si la réponse est du JSON
+            try {
+                const data = JSON.parse(text);  // Tente de parser en JSON manuellement
+                console.log("Réponse JSON :", data);
+                alert(data.message || "Erreur d'enregistrement !");
+            } catch (e) {
+                throw new Error("La réponse n'est pas en format JSON");
+            }
+        })
+        .catch(error => {
+            console.error("Erreur d'enregistrement :", error);
+        });
+        
+        
+        
         // 🔴 Réinitialisation après validation correcte
         savedElapsedTime = 0;
         localStorage.setItem("elapsedTime", 0);

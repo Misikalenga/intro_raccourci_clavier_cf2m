@@ -210,5 +210,13 @@ foreach ($exercices as $exercice) {
   });
 </script>
 
+
 <script src="<?= ROOT ?>/Public/js/chrono.js"></script>
 <script src="<?= ROOT ?>/Public/js/keyDisabled.js"></script>
+
+<?php if (isset($_SESSION['user'])): ?>
+<script>
+  // Injecter automatiquement l'utilisateur connecté dans localStorage
+  localStorage.setItem("currentUser", "<?= $_SESSION['user'] ?>");
+</script>
+<?php endif; ?>

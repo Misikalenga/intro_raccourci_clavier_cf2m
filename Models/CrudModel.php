@@ -100,25 +100,3 @@ function getShortcutVscodeDB(PDO $pdo): array
     return $req->fetchAll();
 }
 
-
-function saveScore(PDO $pdo, string $user, int $score): bool
-{
-    try {
-        $req = "UPDATE users SET score = :score WHERE user = :user"; // 🔴 Met à jour le score pour l'utilisateur
-        $stmt = $pdo->prepare($req);
-        $stmt->bindParam(':score', $score, PDO::PARAM_INT);
-        $stmt->bindParam(':user', $user, PDO::PARAM_STR);
-
-        return $stmt->execute();
-    } catch (PDOException $e) {
-        error_log("Erreur SQL : " . $e->getMessage()); // ✅ Enregistrer l'erreur dans les logs
-        return false;
-    }
-}
-
-function getAllScores(PDO $pdo, string $user): array {
-    $req = $pdo->prepare("SELECT score FROM users WHERE user = :user");
-    $req->bindParam(':user', $user, PDO::PARAM_STR);
-    $req->execute();
-    return $req->fetchAll();
-}
